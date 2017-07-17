@@ -25,7 +25,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.testing);
+        setContentView(R.layout.swiping_activity);
 
         swipeBackActivityHelper = new SwipeBackActivityHelper(this);
         swipeBackActivityHelper.onActivityCreate();

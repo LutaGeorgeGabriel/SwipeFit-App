@@ -19,6 +19,7 @@ import com.github.mzule.fantasyslide.Transformer;
 import eu.swipefit.app.R;
 import eu.swipefit.app.swiping.SwipingActivity;
 import eu.swipefit.app.UniversalActivity;
+import io.saeid.fabloading.LoadingView;
 
 public class MainActivity extends Activity {
 
@@ -32,17 +33,36 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_menu_activity);
 
-        /*LoadingView mLoadingView = (LoadingView) findViewById(R.id.loading_view);
-        mLoadingView.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_BOTTOM);
-        mLoadingView.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_TOP);
-        mLoadingView.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_LEFT);
-        mLoadingView.addAnimation(R.color.colorBackground,R.drawable.trousers,LoadingView.FROM_RIGHT);
-        mLoadingView.startAnimation();*/
+        LoadingView mLoadingView_00 = (LoadingView) findViewById(R.id.loading_view_00);
+        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_BOTTOM);
+        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_TOP);
+        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_LEFT);
+        mLoadingView_00.startAnimation();
+
+
+        LoadingView mLoadingView_01 = (LoadingView) findViewById(R.id.loading_view_01);
+        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_BOTTOM);
+        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_TOP);
+        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_LEFT);
+        mLoadingView_01.startAnimation();
+
+        LoadingView mLoadingView_10 = (LoadingView) findViewById(R.id.loading_view_10);
+        mLoadingView_10.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_BOTTOM);
+        mLoadingView_10.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_TOP);
+        mLoadingView_10.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_LEFT);
+        mLoadingView_10.startAnimation();
+
+
+        LoadingView mLoadingView_11 = (LoadingView) findViewById(R.id.loading_view_11);
+        mLoadingView_11.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_BOTTOM);
+        mLoadingView_11.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_TOP);
+        mLoadingView_11.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_LEFT);
+        mLoadingView_11.startAnimation();
 
         /*//also you can add listener for getting callback (optional)
-        mLoadingView.addListener(new LoadingView.LoadingListener() {
+        mLoadingView_01.addListener(new LoadingView.LoadingListener() {
             @Override public void onAnimationStart(int currentItemPosition) {
             }
 
@@ -76,7 +96,7 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean onSelect(View view, int index) {
-                tipView.setVisibility(View.INVISIBLE);
+                tipView.setVisibility(View.VISIBLE);
                 Toast.makeText(MainActivity.this,"onSelect", Toast.LENGTH_SHORT).show();
                 Toast.makeText(MainActivity.this, String.format("%d selected", index), Toast.LENGTH_SHORT).show();
                 return false;

@@ -11,11 +11,113 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-        <ImageView
+        <!--<ImageView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:src="@drawable/clothes_illustration"
-            android:scaleType="centerInside"/>
+            android:scaleType="centerInside"/>-->
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/layout_first_row">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <io.saeid.fabloading.LoadingView
+                      android:id="@+id/loading_view_00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="1"
+                        android:scaleY="1"
+                        app:mfl_onclickLoading="true"
+                        android:layout_gravity="center"
+                        app:mfl_duration="500"
+                        app:mfl_repeat="6" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <io.saeid.fabloading.LoadingView
+                        android:id="@+id/loading_view_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="1"
+                        android:scaleY="1"
+                        app:mfl_onclickLoading="true"
+                        app:mfl_duration="500"
+                        app:mfl_repeat="6" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="bottom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/layout_second_row"
+                android:layout_below="@id/layout_first_row">
+
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <io.saeid.fabloading.LoadingView
+                        android:id="@+id/loading_view_10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="1"
+                        android:scaleY="1"
+                        app:mfl_onclickLoading="true"
+                        android:layout_gravity="center"
+                        app:mfl_duration="500"
+                        app:mfl_repeat="6" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <io.saeid.fabloading.LoadingView
+                        android:id="@+id/loading_view_11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="1"
+                        android:scaleY="1"
+                        app:mfl_onclickLoading="true"
+                        app:mfl_duration="500"
+                        app:mfl_repeat="6" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
         <com.github.mzule.fantasyslide.SideBar
             android:gravity="center_vertical"
@@ -193,6 +295,7 @@
         android:visibility="invisible"
         android:layout_width="160.0dip"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
