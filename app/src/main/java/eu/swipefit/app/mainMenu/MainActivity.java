@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 
                     @Override
                     public void onAnimationEnd(int nextItemPosition) {
-                        LoadingView mLoadingView_00 = findViewById(R.id.loading_view_00);
+                        /*LoadingView mLoadingView_00 = findViewById(R.id.loading_view_00);
                         mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.blazer,LoadingView.FROM_BOTTOM);
                         mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_TOP);
                         mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.dress,LoadingView.FROM_LEFT);
@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
                         mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt_2,LoadingView.FROM_TOP);
                         mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt_3,LoadingView.FROM_RIGHT);
                         mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shoes,LoadingView.FROM_TOP);
-                        mLoadingView_00.startAnimation();
+                        mLoadingView_00.startAnimation();*/
                     }
                 });
             }
@@ -89,12 +89,13 @@ public class MainActivity extends Activity {
                 LoadingView mLoadingView_01 = findViewById(R.id.loading_view_01);
                 mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.shorts,LoadingView.FROM_TOP);
                 mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_BOTTOM);
-                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_LEFT);
-                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tie,LoadingView.FROM_RIGHT);
-                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.top_hat,LoadingView.FROM_BOTTOM);
-                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.trousers,LoadingView.FROM_LEFT);
-                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_TOP);
-                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.vest,LoadingView.FROM_RIGHT);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_RIGHT);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tie,LoadingView.FROM_LEFT);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.top_hat,LoadingView.FROM_RIGHT);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.trousers,LoadingView.FROM_TOP);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_BOTTOM);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.vest,LoadingView.FROM_LEFT);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.hoodie,LoadingView.FROM_BOTTOM);
                 mLoadingView_01.startAnimation();
                 mLoadingView_01.addListener(new LoadingView.LoadingListener() {
                     @Override
@@ -109,7 +110,7 @@ public class MainActivity extends Activity {
 
                     @Override
                     public void onAnimationEnd(int nextItemPosition) {
-                        LoadingView mLoadingView_01 = findViewById(R.id.loading_view_01);
+                        /*LoadingView mLoadingView_01 = findViewById(R.id.loading_view_01);
                         mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.shorts,LoadingView.FROM_TOP);
                         mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_BOTTOM);
                         mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_LEFT);
@@ -118,7 +119,7 @@ public class MainActivity extends Activity {
                         mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.trousers,LoadingView.FROM_LEFT);
                         mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_TOP);
                         mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.vest,LoadingView.FROM_RIGHT);
-                        mLoadingView_01.startAnimation();
+                        mLoadingView_01.startAnimation();*/
                     }
                 });
             }
