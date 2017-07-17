@@ -3,6 +3,7 @@ package eu.swipefit.app.mainMenu;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -24,6 +25,9 @@ import eu.swipefit.app.about.AboutActivity;
 import eu.swipefit.app.swiping.SwipingActivity;
 import eu.swipefit.app.UniversalActivity;
 import io.saeid.fabloading.LoadingView;
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
 
 public class MainActivity extends Activity {
 
@@ -249,6 +253,21 @@ public class MainActivity extends Activity {
         if(intent != null) {
             startActivity(intent);
         }
+    }
+
+    public void onFaceClick(View view) {
+        KonfettiView konfettiView = (KonfettiView) findViewById(R.id.viewKonfetti);
+        Size size = new Size(12,3);
+        konfettiView.build()
+                .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(2000L)
+                .addShapes(Shape.RECT, Shape.CIRCLE)
+                .addSizes(size)
+                .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
+                .stream(300, 5000L);
     }
 
 

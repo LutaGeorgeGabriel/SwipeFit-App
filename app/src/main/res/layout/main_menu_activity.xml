@@ -17,6 +17,7 @@
             android:src="@drawable/clothes_illustration"
             android:scaleType="centerInside"/>-->
 
+
         <RelativeLayout
 
             android:layout_width="wrap_content"
@@ -24,6 +25,11 @@
             android:background="@drawable/fabric"
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <nl.dionsegijn.konfetti.KonfettiView
+                android:id="@+id/viewKonfetti"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -243,12 +249,11 @@
             android:layout_height="fill_parent"
             app:maxTranslationX="-55.0dip">
 
-            <TextView
-                android:text="something"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:drawableLeft="@drawable/smoke"
-                style="@style/AppTheme"/>
+            <ImageView
+                android:onClick="onFaceClick"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:src="@drawable/ic_face"/>
 
         </com.github.mzule.fantasyslide.SideBar>
 
