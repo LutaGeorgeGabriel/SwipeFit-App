@@ -25,98 +25,107 @@
             xmlns:app="http://schemas.android.com/apk/res-auto">
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/layout_first_row">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_first_row"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:gravity="center">
+                    android:orientation="horizontal">
 
-                    <io.saeid.fabloading.LoadingView
-                      android:id="@+id/loading_view_00"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:scaleX="1"
-                        android:scaleY="1"
-                        app:mfl_onclickLoading="true"
                         android:layout_gravity="center"
-                        app:mfl_duration="500"
-                        app:mfl_repeat="6" />
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <io.saeid.fabloading.LoadingView
+                            android:id="@+id/loading_view_00"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:mfl_duration="500"
+                            app:mfl_onclickLoading="true"
+                            app:mfl_repeat="6" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <io.saeid.fabloading.LoadingView
+                            android:id="@+id/loading_view_01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:mfl_duration="500"
+                            app:mfl_onclickLoading="true"
+                            app:mfl_repeat="6" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
+                    android:gravity="bottom"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:id="@+id/layout_second_row"
+                    android:layout_weight="1">
 
-                    <io.saeid.fabloading.LoadingView
-                        android:id="@+id/loading_view_01"
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="1"
-                        android:scaleY="1"
-                        app:mfl_onclickLoading="true"
-                        app:mfl_duration="500"
-                        app:mfl_repeat="6" />
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <io.saeid.fabloading.LoadingView
+                            android:id="@+id/loading_view_10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:mfl_onclickLoading="true"
+                            android:layout_gravity="center"
+                            app:mfl_duration="500"
+                            app:mfl_repeat="6" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <io.saeid.fabloading.LoadingView
+                            android:id="@+id/loading_view_11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="1"
+                            android:scaleY="1"
+                            app:mfl_onclickLoading="true"
+                            app:mfl_duration="500"
+                            app:mfl_repeat="6" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
+
 
             </LinearLayout>
-
-            <LinearLayout
-                android:gravity="bottom"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/layout_second_row"
-                android:layout_below="@id/layout_first_row">
-
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <io.saeid.fabloading.LoadingView
-                        android:id="@+id/loading_view_10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="1"
-                        android:scaleY="1"
-                        app:mfl_onclickLoading="true"
-                        android:layout_gravity="center"
-                        app:mfl_duration="500"
-                        app:mfl_repeat="6" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <io.saeid.fabloading.LoadingView
-                        android:id="@+id/loading_view_11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="1"
-                        android:scaleY="1"
-                        app:mfl_onclickLoading="true"
-                        app:mfl_duration="500"
-                        app:mfl_repeat="6" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
         </RelativeLayout>
 
         <com.github.mzule.fantasyslide.SideBar
