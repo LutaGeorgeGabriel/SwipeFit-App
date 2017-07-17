@@ -48,5 +48,6 @@ dependencies {
     compile 'me.imid.swipebacklayout.lib:library:1.0.0'
     compile 'hanks.xyz:htextview-library:0.1.5'
     compile 'io.saeid:fab-loading:1.0.0'
+    compile 'nl.dionsegijn:konfetti:1.0.2'
     testCompile 'junit:junit:4.12'
 }

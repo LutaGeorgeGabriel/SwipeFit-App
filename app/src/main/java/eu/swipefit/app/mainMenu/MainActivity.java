@@ -20,6 +20,7 @@ import com.github.mzule.fantasyslide.SideBar;
 import com.github.mzule.fantasyslide.SimpleFantasyListener;
 import com.github.mzule.fantasyslide.Transformer;
 import eu.swipefit.app.R;
+import eu.swipefit.app.about.AboutActivity;
 import eu.swipefit.app.swiping.SwipingActivity;
 import eu.swipefit.app.UniversalActivity;
 import io.saeid.fabloading.LoadingView;
@@ -239,6 +240,13 @@ public class MainActivity extends Activity {
         View user = (TextView) findViewById(R.id.user);
         Intent intent = new Intent(getApplicationContext(),SwipingActivity.class);
         if (intent != null) {
+            startActivity(intent);
+        }
+    }
+
+    public void onSwipeClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+        if(intent != null) {
             startActivity(intent);
         }
     }
