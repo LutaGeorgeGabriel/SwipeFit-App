@@ -4,9 +4,12 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,31 +38,92 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activity);
 
-        LoadingView mLoadingView_00 = (LoadingView) findViewById(R.id.loading_view_00);
-        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_BOTTOM);
-        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_TOP);
-        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_LEFT);
-        mLoadingView_00.startAnimation();
 
 
-        LoadingView mLoadingView_01 = (LoadingView) findViewById(R.id.loading_view_01);
-        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_BOTTOM);
-        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_TOP);
-        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_LEFT);
-        mLoadingView_01.startAnimation();
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                LoadingView mLoadingView_00 = findViewById(R.id.loading_view_00);
+                mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.blazer,LoadingView.FROM_BOTTOM);
+                mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_TOP);
+                mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.dress,LoadingView.FROM_LEFT);
+                mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.dress_2,LoadingView.FROM_RIGHT);
+                mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.hoodie,LoadingView.FROM_LEFT);
+                mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_BOTTOM);
+                mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt_2,LoadingView.FROM_TOP);
+                mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt_3,LoadingView.FROM_RIGHT);
+                mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shoes,LoadingView.FROM_TOP);
+                mLoadingView_00.startAnimation();
+                mLoadingView_00.addListener(new LoadingView.LoadingListener() {
+                    @Override
+                    public void onAnimationStart(int currentItemPosition) {
 
-        LoadingView mLoadingView_10 = (LoadingView) findViewById(R.id.loading_view_10);
-        mLoadingView_10.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_BOTTOM);
-        mLoadingView_10.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_TOP);
-        mLoadingView_10.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_LEFT);
-        mLoadingView_10.startAnimation();
+                    }
 
+                    @Override
+                    public void onAnimationRepeat(int nextItemPosition) {
 
-        LoadingView mLoadingView_11 = (LoadingView) findViewById(R.id.loading_view_11);
-        mLoadingView_11.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_BOTTOM);
-        mLoadingView_11.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_TOP);
-        mLoadingView_11.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_LEFT);
-        mLoadingView_11.startAnimation();
+                    }
+
+                    @Override
+                    public void onAnimationEnd(int nextItemPosition) {
+                        LoadingView mLoadingView_00 = findViewById(R.id.loading_view_00);
+                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.blazer,LoadingView.FROM_BOTTOM);
+                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_TOP);
+                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.dress,LoadingView.FROM_LEFT);
+                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.dress_2,LoadingView.FROM_RIGHT);
+                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.hoodie,LoadingView.FROM_LEFT);
+                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_BOTTOM);
+                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt_2,LoadingView.FROM_TOP);
+                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt_3,LoadingView.FROM_RIGHT);
+                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shoes,LoadingView.FROM_TOP);
+                        mLoadingView_00.startAnimation();
+                    }
+                });
+            }
+        });
+
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                LoadingView mLoadingView_01 = findViewById(R.id.loading_view_01);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.shorts,LoadingView.FROM_TOP);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_BOTTOM);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_LEFT);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tie,LoadingView.FROM_RIGHT);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.top_hat,LoadingView.FROM_BOTTOM);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.trousers,LoadingView.FROM_LEFT);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_TOP);
+                mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.vest,LoadingView.FROM_RIGHT);
+                mLoadingView_01.startAnimation();
+                mLoadingView_01.addListener(new LoadingView.LoadingListener() {
+                    @Override
+                    public void onAnimationStart(int currentItemPosition) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(int nextItemPosition) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(int nextItemPosition) {
+                        LoadingView mLoadingView_01 = findViewById(R.id.loading_view_01);
+                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.shorts,LoadingView.FROM_TOP);
+                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_BOTTOM);
+                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_LEFT);
+                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tie,LoadingView.FROM_RIGHT);
+                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.top_hat,LoadingView.FROM_BOTTOM);
+                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.trousers,LoadingView.FROM_LEFT);
+                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_TOP);
+                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.vest,LoadingView.FROM_RIGHT);
+                        mLoadingView_01.startAnimation();
+                    }
+                });
+            }
+        });
+
 
         /*//also you can add listener for getting callback (optional)
         mLoadingView_01.addListener(new LoadingView.LoadingListener() {
@@ -183,5 +247,5 @@ public class MainActivity extends Activity {
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
      */
-    public native String stringFromJNI();
+    //public native String stringFromJNI();
 }
