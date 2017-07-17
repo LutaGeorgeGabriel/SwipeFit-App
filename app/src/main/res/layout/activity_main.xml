@@ -1,19 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="eu.swipefit.swipefit.MainActivity">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorBackground">
+
+    <com.github.mzule.fantasyslide.FantasyDrawerLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/drawer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/clothes_illustration"
+            android:scaleType="centerInside"/>
+
+        <com.github.mzule.fantasyslide.SideBar
+            android:gravity="center_vertical"
+            android:layout_gravity="start"
+            android:id="@+id/leftSideBar"
+            android:background="@color/colorMenu"
+            android:layout_width="200.0dip"
+            android:layout_height="fill_parent"
+            app:maxTranslationX="55.0dip">
+
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:id="@+id/userInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30.0dip"
+                android:onClick="onClick">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#FF000000"/>
+
+                <TextView
+                    android:textSize="18.0sp"
+                    android:textColor="@android:color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SwipeFit"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onUserClick"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_identity"/>
+
+                <TextView
+                    android:id="@+id/user"
+                    android:text="User"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onUserClick"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_identity"/>
+
+                <TextView
+                    android:text="User"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+            </LinearLayout><LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onUserClick"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_identity"/>
+
+                <TextView
+                    android:text="User"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onUserClick"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_identity"/>
+
+                <TextView
+                    android:text="User"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onUserClick"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_identity"/>
+
+                <TextView
+                    android:text="User"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onUserClick"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_identity"/>
+
+                <TextView
+                    android:text="User"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </com.github.mzule.fantasyslide.SideBar>
+
+
+        <com.github.mzule.fantasyslide.SideBar
+            android:gravity="center|right"
+            android:layout_gravity="end"
+            android:id="@+id/rightSideBar"
+            android:background="@color/colorMenu"
+            android:layout_width="133.0dip"
+            android:layout_height="fill_parent"
+            app:maxTranslationX="-55.0dip">
+
+            <TextView
+                android:text="something"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:drawableLeft="@drawable/smoke"
+                style="@style/AppTheme"/>
+
+        </com.github.mzule.fantasyslide.SideBar>
+
+    </com.github.mzule.fantasyslide.FantasyDrawerLayout>
 
     <TextView
-        android:id="@+id/sample_text"
-        android:layout_width="wrap_content"
+        android:textSize="16.0sp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"
+        android:id="@+id/tipView"
+        android:text="TIP_VIEW"
+        android:padding="20.0dip"
+        android:visibility="invisible"
+        android:layout_width="160.0dip"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentRight="true"/>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

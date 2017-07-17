@@ -1,4 +1,4 @@
-package eu.swipefit.swipefit.splashscreen;
+package eu.swipefit.app.splashscreen;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -17,8 +17,8 @@ import android.view.animation.AnimationUtils;
 import com.hanks.htextview.HTextView;
 import com.hanks.htextview.HTextViewType;
 
-import eu.swipefit.swipefit.MainActivity;
-import eu.swipefit.swipefit.R;
+import eu.swipefit.app.mainMenu.MainActivity;
+import eu.swipefit.app.R;
 import pl.droidsonroids.gif.GifTextView;
 
 import static android.media.AudioManager.AUDIOFOCUS_GAIN;
@@ -140,7 +140,7 @@ public class SplashScreenActivity extends Activity {
             // Regardless of the current state of the media player, release its resources
             // because we no longer need it.
             mediaPlayer.release();
-             // Set the media player back to null. For our code, we've decided that
+            // Set the media player back to null. For our code, we've decided that
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mediaPlayer = null;

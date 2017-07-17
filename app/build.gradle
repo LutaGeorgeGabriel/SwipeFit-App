@@ -39,8 +39,14 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.1+'
+    compile 'com.yarolegovich:sliding-root-nav:1.0.2'
+    compile 'com.github.mzule.fantasyslide:library:1.0.5'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.github.mzule.fantasyslide:library:1.0.5'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'me.imid.swipebacklayout.lib:library:1.0.0'
     compile 'hanks.xyz:htextview-library:0.1.5'
+    compile 'io.saeid:fab-loading:1.0.0'
     testCompile 'junit:junit:4.12'
 }
