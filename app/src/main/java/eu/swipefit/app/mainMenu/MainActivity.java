@@ -21,6 +21,7 @@ import com.github.mzule.fantasyslide.SimpleFantasyListener;
 import com.github.mzule.fantasyslide.Transformer;
 import eu.swipefit.app.R;
 import eu.swipefit.app.about.AboutActivity;
+import eu.swipefit.app.social.SocialActivity;
 import eu.swipefit.app.swiping.SwipingActivity;
 import eu.swipefit.app.UniversalActivity;
 import io.saeid.fabloading.LoadingView;
@@ -266,6 +267,11 @@ public class MainActivity extends Activity {
                 .addSizes(size)
                 .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
                 .stream(300, 5000L);
+    }
+
+    public void onSocialClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), SocialActivity.class);
+        startActivity(intent);
     }
 
 

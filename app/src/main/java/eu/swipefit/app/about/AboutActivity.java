@@ -3,6 +3,7 @@ package eu.swipefit.app.about;
  * FILE DESCRIPTION
  */
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +15,7 @@ import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
 
 /** ADD COMMENTS */
-public class AboutActivity extends AppCompatActivity{
+public class AboutActivity extends Activity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
