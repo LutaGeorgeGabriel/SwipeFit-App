@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.github.mzule.fantasyslide.SideBar;
 import com.github.mzule.fantasyslide.SimpleFantasyListener;
 import com.github.mzule.fantasyslide.Transformer;
@@ -42,7 +41,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activity);
-
 
 
         new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -242,14 +240,14 @@ public class MainActivity extends Activity {
 
     public void onUserClick(View view) {
         View user = (TextView) findViewById(R.id.user);
-        Intent intent = new Intent(getApplicationContext(),SwipingActivity.class);
+        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
         if (intent != null) {
             startActivity(intent);
         }
     }
 
     public void onSwipeClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+        Intent intent = new Intent(getApplicationContext(), SwipingActivity.class);
         if(intent != null) {
             startActivity(intent);
         }

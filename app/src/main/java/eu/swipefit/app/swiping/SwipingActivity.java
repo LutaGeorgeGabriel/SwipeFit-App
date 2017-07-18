@@ -5,6 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import com.daprlabs.aaron.swipedeck.SwipeDeck;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import eu.swipefit.app.R;
 import io.saeid.fabloading.LoadingView;
@@ -22,26 +30,65 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
     private SwipeBackActivityHelper swipeBackActivityHelper;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.swiping_activity);
-
         swipeBackActivityHelper = new SwipeBackActivityHelper(this);
         swipeBackActivityHelper.onActivityCreate();
+        setContentView(R.layout.swipe_deck);
+        final SwipeDeck cardStack = findViewById(R.id.swipe_deck);
 
-        LoadingView mLoadingView = (LoadingView) findViewById(R.id.loading_view);
-        mLoadingView.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_BOTTOM);
-        mLoadingView.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_TOP);
-        mLoadingView.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_LEFT);
-        //mLoadingView.addAnimation(R.color.colorBackground,R.drawable.trousers,LoadingView.FROM_RIGHT);
-        mLoadingView.startAnimation();
-    }
+        final List testData = new ArrayList<>();
+        testData.add("0");
+        testData.add("1");
+        testData.add("2");
+        testData.add("3");
+        testData.add("4");
 
-    public static Intent newIntent(Context context, String title) {
-        Intent intent = new Intent(context, SwipingActivity.class);
-        intent.putExtra("title", title);
-        return intent;
+        final SwipeDeckAdapter adapter = new SwipeDeckAdapter(testData, this);
+        if(cardStack != null){
+            cardStack.setAdapter(adapter);
+        }
+
+        cardStack.setCallback(new SwipeDeck.SwipeDeckCallback() {
+            @Override
+            public void cardSwipedLeft(long stableId) {
+
+            }
+
+            @Override
+            public void cardSwipedRight(long stableId) {
+
+            }
+        });
+
+        cardStack.setLeftImage(R.id.left_image);
+        cardStack.setRightImage(R.id.right_image);
+
+        //example of buttons triggering events on the deck
+        Button btn = (Button) findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardStack.swipeTopCardLeft(180);
+            }
+        });
+        Button btn2 = (Button) findViewById(R.id.button2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardStack.swipeTopCardRight(180);
+            }
+        });
+
+        Button btn3 = (Button) findViewById(R.id.button3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testData.add("a sample string.");
+                adapter.notifyDataSetChanged();
+            }
+        });
+
     }
 
     @Override
