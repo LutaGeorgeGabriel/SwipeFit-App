@@ -2,10 +2,7 @@ package eu.swipefit.app.swiping;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,10 +11,10 @@ import com.daprlabs.aaron.swipedeck.SwipeDeck;
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.swipefit.app.Profile;
 import eu.swipefit.app.R;
-import io.saeid.fabloading.LoadingView;
+import eu.swipefit.app.Utils;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
-import me.imid.swipebacklayout.lib.Utils;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
 
@@ -29,13 +26,23 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
 public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
     private SwipeBackActivityHelper swipeBackActivityHelper;
+    private SwipeDeck swipeDeck;
+    private CardView card;
+    private Context context;
+    private ArrayList<CardView> cards = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         swipeBackActivityHelper = new SwipeBackActivityHelper(this);
         swipeBackActivityHelper.onActivityCreate();
-        setContentView(R.layout.swipe_deck);
+        setContentView(R.layout.swiping_activity);
         final SwipeDeck cardStack = findViewById(R.id.swipe_deck);
+
+        for(Profile profile : Utils.loadProfiles(this.getApplicationContext())){
+            card = new CardView(swipeDeck,profile,context);
+            //swipeDeck.addView(card);
+            cards.add(card);
+        }
 
         final List testData = new ArrayList<>();
         testData.add("0");
@@ -44,7 +51,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         testData.add("3");
         testData.add("4");
 
-        final SwipeDeckAdapter adapter = new SwipeDeckAdapter(testData, this);
+        final SwipeDeckAdapter adapter = new SwipeDeckAdapter(cards,this);
         if(cardStack != null){
             cardStack.setAdapter(adapter);
         }
@@ -109,8 +116,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
     @Override
     public void scrollToFinishActivity() {
-        Utils.convertActivityToTranslucent(this);
-        getSwipeBackLayout().scrollToFinishActivity();
+
     }
 
 

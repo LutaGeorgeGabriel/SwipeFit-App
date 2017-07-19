@@ -20,10 +20,10 @@ import eu.swipefit.app.R;
 /** ADD COMMENTS */
 public class SwipeDeckAdapter extends BaseAdapter {
 
-    private List<String> data;
+    private List<CardView> data;
     private Context context;
 
-    public SwipeDeckAdapter(List<String> data, Context context) {
+    public SwipeDeckAdapter(List<CardView> data, Context context) {
         this.data = data;
         this.context = context;
     }
@@ -57,10 +57,10 @@ public class SwipeDeckAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) v.findViewById(R.id.offer_image);
 
         //Picasso.with(context).load(R.drawable.peter).fit().centerCrop().into(imageView);
-        Picasso.with(context).load("http://www.officialpsds.com/images/thumbs/Peter-Griffin-psd30524.png").into(imageView);
+        Picasso.with(context).load(data.get(position).mProfile.getImageUrl()).into(imageView);
         TextView textView = (TextView) v.findViewById(R.id.sample_text);
-        String item = (String)getItem(position);
-        textView.setText(item);
+       /* String item = (String)getItem(position);
+        textView.setText(item);*/
 
         v.setOnClickListener(new View.OnClickListener() {
             @Override
