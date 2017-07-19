@@ -19,13 +19,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <eu.swipefit.app.TouchImageView
                 android:id="@+id/offer_image"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/peter" />
+                android:onClick="onImageLongPress"
+                tools:src="@drawable/peter"/>
+
         </RelativeLayout>
 
         <LinearLayout
