@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UniversalActivity"
+        <activity android:name=".universalActivity.UniversalActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

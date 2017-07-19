@@ -1,4 +1,4 @@
-package eu.swipefit.app;
+package eu.swipefit.app.universalActivity;
 /**
  * FILE DESCRIPTION
  */
