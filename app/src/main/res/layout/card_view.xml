@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
+    android:background="@color/cardview_light_background"
     android:layout_gravity="center"
     android:layout_width="match_parent"
     android:layout_height="400dp"
@@ -25,14 +26,14 @@
                 android:layout_height="300dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:onClick="onImageLongPress"
-                tools:src="@drawable/peter"/>
+                tools:src="@drawable/peter" />
 
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -59,6 +60,7 @@
             android:id="@+id/sample_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
             android:gravity="center_horizontal"
             android:text="Sample Text"
             android:textSize="20dp" />
