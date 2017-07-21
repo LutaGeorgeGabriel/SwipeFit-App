@@ -66,7 +66,7 @@ dependencies {
     compile 'hanks.xyz:htextview-library:0.1.5'
     compile 'io.saeid:fab-loading:1.0.0'
     compile 'nl.dionsegijn:konfetti:1.0.2'
-    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    //compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile 'com.daprlabs.aaron:swipedeck:2.0.6'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.code.gson:gson:2.7'

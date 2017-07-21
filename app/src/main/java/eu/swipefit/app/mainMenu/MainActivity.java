@@ -20,6 +20,7 @@ import com.github.mzule.fantasyslide.SimpleFantasyListener;
 import com.github.mzule.fantasyslide.Transformer;
 import eu.swipefit.app.R;
 import eu.swipefit.app.about.AboutActivity;
+import eu.swipefit.app.favorites.FavoritesActivity;
 import eu.swipefit.app.social.SocialActivity;
 import eu.swipefit.app.swiping.SwipingActivity;
 import eu.swipefit.app.universalActivity.UniversalActivity;
@@ -270,6 +271,11 @@ public class MainActivity extends Activity {
 
     public void onSocialClick(View view) {
         Intent intent = new Intent(getApplicationContext(), SocialActivity.class);
+        startActivity(intent);
+    }
+
+    public void onFavoritesClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), FavoritesActivity.class);
         startActivity(intent);
     }
 

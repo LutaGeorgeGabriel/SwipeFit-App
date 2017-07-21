@@ -132,7 +132,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                         cardStack.swipeTopCardLeft(180);
                         break;
                     case 1:
-                        FavoritesContainer.addFavroiteCard(cards.get(cardIndex));
+                        FavoritesContainer.addFavroiteCard(cards.get(cardIndex).getmProduct());
                         break;
                     case 3:
                         cardStack.swipeTopCardRight(180);
@@ -164,5 +164,9 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
     }
 
-
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        cardIndex = 0;
+    }
 }
