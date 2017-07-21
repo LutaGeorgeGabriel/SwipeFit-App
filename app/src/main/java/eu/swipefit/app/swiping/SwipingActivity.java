@@ -3,15 +3,14 @@ package eu.swipefit.app.swiping;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import com.daprlabs.aaron.swipedeck.SwipeDeck;
+import com.gjiazhe.multichoicescirclebutton.MultiChoicesCircleButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.swipefit.app.Profile;
+import eu.swipefit.app.Product;
 import eu.swipefit.app.R;
 import eu.swipefit.app.Utils;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
@@ -38,8 +37,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         setContentView(R.layout.swiping_activity);
         final SwipeDeck cardStack = findViewById(R.id.swipe_deck);
 
-        for(Profile profile : Utils.loadProfiles(this.getApplicationContext())){
-            card = new CardView(swipeDeck,profile,context);
+        for(Product product : Utils.loadProfiles(this.getApplicationContext())){
+            card = new CardView(swipeDeck, product,context);
             //swipeDeck.addView(card);
             cards.add(card);
         }
@@ -71,7 +70,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         cardStack.setLeftImage(R.id.left_image);
         cardStack.setRightImage(R.id.right_image);
 
-        //example of buttons triggering events on the deck
+        /*//example of buttons triggering events on the deck
         Button btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +93,28 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 testData.add("a sample string.");
                 adapter.notifyDataSetChanged();
             }
-        });
+        });*/
+
+        MultiChoicesCircleButton.Item item1 = new MultiChoicesCircleButton.Item("Like", getResources().getDrawable(R.drawable.up), 30);
+
+        MultiChoicesCircleButton.Item item2 = new MultiChoicesCircleButton.Item("Shop", getResources().getDrawable(R.drawable.shop), 90);
+
+        MultiChoicesCircleButton.Item item3= new MultiChoicesCircleButton.Item("Dislike", getResources().getDrawable(R.drawable.down), 150);
+
+        MultiChoicesCircleButton.Item item4 = new MultiChoicesCircleButton.Item("Dislike", getResources().getDrawable(R.drawable.arrow_left), 60);
+
+        MultiChoicesCircleButton.Item item5 = new MultiChoicesCircleButton.Item("Dislike", getResources().getDrawable(R.drawable.arrow_right), 120);
+
+        List<MultiChoicesCircleButton.Item> buttonItems = new ArrayList<>();
+        buttonItems.add(item1);
+        buttonItems.add(item2);
+        buttonItems.add(item3);
+        buttonItems.add(item4);
+        buttonItems.add(item5);
+
+
+        MultiChoicesCircleButton multiChoicesCircleButton = (MultiChoicesCircleButton) findViewById(R.id.multiChoicesCircleButton);
+        multiChoicesCircleButton.setButtonItems(buttonItems);
 
     }
 

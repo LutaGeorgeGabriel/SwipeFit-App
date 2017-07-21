@@ -10,7 +10,7 @@ import java.util.List;
 
 import annotations.Layout;
 import annotations.View;
-import eu.swipefit.app.Profile;
+import eu.swipefit.app.Product;
 import eu.swipefit.app.R;
 
 /**
@@ -29,12 +29,12 @@ public class CardView extends AppCompatActivity {
 
     private List<String> data;
     private SwipeDeck swipeDeck;
-    public Profile mProfile;
+    public Product mProduct;
     private Context context;
 
-    public CardView(SwipeDeck swipeDeck, Profile mProfile, Context mContext) {
+    public CardView(SwipeDeck swipeDeck, Product mProduct, Context mContext) {
         this.swipeDeck = swipeDeck;
-        this.mProfile = mProfile;
+        this.mProduct = mProduct;
         this.context = mContext;
     }
 }

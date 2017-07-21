@@ -22,17 +22,17 @@ public class Utils {
 
     private static final String TAG = "Utils";
 
-    public static List<Profile> loadProfiles(Context context){
+    public static List<Product> loadProfiles(Context context){
         try{
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             JSONArray array = new JSONArray(loadJSONFromAsset(context, "data.json"));
-            List<Profile> profileList = new ArrayList<>();
+            List<Product> productList = new ArrayList<>();
             for(int i=0;i<array.length();i++){
-                Profile profile = gson.fromJson(array.getString(i), Profile.class);
-                profileList.add(profile);
+                Product product = gson.fromJson(array.getString(i), Product.class);
+                productList.add(product);
             }
-            return profileList;
+            return productList;
         }catch (Exception e){
             e.printStackTrace();
             return null;
