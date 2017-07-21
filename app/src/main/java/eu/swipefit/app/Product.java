@@ -3,7 +3,7 @@ package eu.swipefit.app;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Profile {
+public class Product {
 
     @SerializedName("name")
     @Expose
