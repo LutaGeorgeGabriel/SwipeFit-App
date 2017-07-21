@@ -10,9 +10,9 @@ import com.gjiazhe.multichoicescirclebutton.MultiChoicesCircleButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.swipefit.app.Product;
 import eu.swipefit.app.R;
 import eu.swipefit.app.Utils;
+import eu.swipefit.app.favorites.FavoritesContainer;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
@@ -26,9 +26,10 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
     private SwipeBackActivityHelper swipeBackActivityHelper;
     private SwipeDeck swipeDeck;
-    private CardView card;
+    private ProductCard card;
     private Context context;
-    private ArrayList<CardView> cards = new ArrayList<>();
+    private ArrayList<ProductCard> cards = new ArrayList<>();
+    private static int cardIndex = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +38,16 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         setContentView(R.layout.swiping_activity);
         final SwipeDeck cardStack = findViewById(R.id.swipe_deck);
 
-        for(Product product : Utils.loadProfiles(this.getApplicationContext())){
-            card = new CardView(swipeDeck, product,context);
+        /*for(Product product : Utils.loadProfiles(this.getApplicationContext())){
+            card = new ProductCard(swipeDeck, product,context);
+            card.setIndex(get);
             //swipeDeck.addView(card);
+            cards.add(card);
+        }*/
+
+        for(int i = 0; i < Utils.loadProfiles(this.getApplicationContext()).size();i++) {
+            card = new ProductCard(swipeDeck, Utils.loadProfiles(this.getApplicationContext()).get(i),context);
+            card.setIndex(i);
             cards.add(card);
         }
 
@@ -58,12 +66,12 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         cardStack.setCallback(new SwipeDeck.SwipeDeckCallback() {
             @Override
             public void cardSwipedLeft(long stableId) {
-
+                cardIndex++;
             }
 
             @Override
             public void cardSwipedRight(long stableId) {
-
+                cardIndex++;
             }
         });
 
@@ -95,26 +103,43 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
             }
         });*/
 
-        MultiChoicesCircleButton.Item item1 = new MultiChoicesCircleButton.Item("Like", getResources().getDrawable(R.drawable.up), 30);
+        final MultiChoicesCircleButton.Item item1 = new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.up), 30);
 
-        MultiChoicesCircleButton.Item item2 = new MultiChoicesCircleButton.Item("Shop", getResources().getDrawable(R.drawable.shop), 90);
+        MultiChoicesCircleButton.Item item2 = new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.ic_favorite), 70);
 
-        MultiChoicesCircleButton.Item item3= new MultiChoicesCircleButton.Item("Dislike", getResources().getDrawable(R.drawable.down), 150);
+        MultiChoicesCircleButton.Item item3 = new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.shop), 110);
 
-        MultiChoicesCircleButton.Item item4 = new MultiChoicesCircleButton.Item("Dislike", getResources().getDrawable(R.drawable.arrow_left), 60);
+        MultiChoicesCircleButton.Item item4= new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.down), 150);
 
-        MultiChoicesCircleButton.Item item5 = new MultiChoicesCircleButton.Item("Dislike", getResources().getDrawable(R.drawable.arrow_right), 120);
 
         List<MultiChoicesCircleButton.Item> buttonItems = new ArrayList<>();
         buttonItems.add(item1);
         buttonItems.add(item2);
         buttonItems.add(item3);
         buttonItems.add(item4);
-        buttonItems.add(item5);
 
+        MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
+        multiChoicesCircleButton.setIcon(getResources().getDrawable(R.drawable.ic_menu));
+        multiChoicesCircleButton.setBackgroundShadowColor(R.color.colorBackground);
+        multiChoicesCircleButton.setButtonColor(R.color.colorSwipingMenuButton);
 
-        MultiChoicesCircleButton multiChoicesCircleButton = (MultiChoicesCircleButton) findViewById(R.id.multiChoicesCircleButton);
         multiChoicesCircleButton.setButtonItems(buttonItems);
+        multiChoicesCircleButton.setOnSelectedItemListener(new MultiChoicesCircleButton.OnSelectedItemListener() {
+            @Override
+            public void onSelected(MultiChoicesCircleButton.Item item, int index) {
+                switch (index) {
+                    case 0:
+                        cardStack.swipeTopCardLeft(180);
+                        break;
+                    case 1:
+                        FavoritesContainer.addFavroiteCard(cards.get(cardIndex));
+                        break;
+                    case 3:
+                        cardStack.swipeTopCardRight(180);
+
+                }
+            }
+        });
 
     }
 

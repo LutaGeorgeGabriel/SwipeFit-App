@@ -20,10 +20,10 @@ import eu.swipefit.app.R;
 /** ADD COMMENTS */
 public class SwipeDeckAdapter extends BaseAdapter {
 
-    private List<CardView> data;
+    private List<ProductCard> data;
     private Context context;
 
-    public SwipeDeckAdapter(List<CardView> data, Context context) {
+    public SwipeDeckAdapter(List<ProductCard> data, Context context) {
         this.data = data;
         this.context = context;
     }

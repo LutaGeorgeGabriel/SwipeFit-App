@@ -1,4 +1,5 @@
-<com.daprlabs.aaron.swipedeck.layouts.SwipeFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.daprlabs.aaron.swipedeck.layouts.SwipeFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,31 +17,12 @@
         swipedeck:card_spacing="20dp"
         swipedeck:swipe_enabled="true"/>
 
-    <!--<Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="swipe left" />
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:text="add card" />
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:text="swipe right" />-->
-
     <com.gjiazhe.multichoicescirclebutton.MultiChoicesCircleButton
         android:id="@+id/multiChoicesCircleButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:mccb_collapseRadius="40dp"
-        app:mccb_expandRadius="120dp"
+        app:mccb_expandRadius="100dp"
         app:mccb_text="Choose"
         app:mccb_buttonColor="@colors/colorSwipingMenuButton"
         app:mccb_enableParallax="true"
