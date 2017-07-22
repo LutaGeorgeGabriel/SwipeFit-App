@@ -44,7 +44,9 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.swiping_activity);
+        swipeBackActivityHelper = new SwipeBackActivityHelper(this);
+        swipeBackActivityHelper.onActivityCreate();
+
         context = getApplicationContext();
         Properties properties = new Properties();
         try {
@@ -58,11 +60,61 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
             @Override
             public void processFinish(List<Product> list) {
                 products = list;
+                updateUI();
             }
         }).execute(URL);
 
-        swipeBackActivityHelper = new SwipeBackActivityHelper(this);
-        swipeBackActivityHelper.onActivityCreate();
+
+
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        swipeBackActivityHelper.onPostCreate();
+    }
+
+    @Override
+    public SwipeBackLayout getSwipeBackLayout() {
+        return swipeBackActivityHelper.getSwipeBackLayout();
+    }
+
+    @Override
+    public void setSwipeBackEnable(boolean enable) {
+        getSwipeBackLayout().setEnableGesture(enable);
+    }
+
+    @Override
+    public void scrollToFinishActivity() {
+
+    }
+
+    private static class ProductsAsyncTask extends AsyncTask<String,Void,List<Product>> {
+
+        public interface AsyncResponse {
+            void processFinish(List<Product> list);
+        }
+
+        public AsyncResponse delegate = null;
+
+        public ProductsAsyncTask(AsyncResponse delegate){
+            this.delegate = delegate;
+        }
+
+        @Override
+        protected List<Product> doInBackground(String... strings) {
+            List<Product> listOfProducts = Networking.fetchEarthquakeData(context ,strings[0]);
+            return listOfProducts;
+        }
+
+        @Override
+        protected void onPostExecute(List<Product> listOfproducts) {
+            delegate.processFinish(listOfproducts);
+        }
+    }
+
+    public void updateUi() {
+        setContentView(R.layout.swiping_activity);
         final SwipeDeck cardStack = findViewById(R.id.swipe_deck);
 
         for(int i = 0; i < products.size(); i++) {
@@ -152,52 +204,6 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 }
             }
         });
-
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        swipeBackActivityHelper.onPostCreate();
-    }
-
-    @Override
-    public SwipeBackLayout getSwipeBackLayout() {
-        return swipeBackActivityHelper.getSwipeBackLayout();
-    }
-
-    @Override
-    public void setSwipeBackEnable(boolean enable) {
-        getSwipeBackLayout().setEnableGesture(enable);
-    }
-
-    @Override
-    public void scrollToFinishActivity() {
-
-    }
-
-    private static class ProductsAsyncTask extends AsyncTask<String,Void,List<Product>> {
-
-        public interface AsyncResponse {
-            void processFinish(List<Product> list);
-        }
-
-        public AsyncResponse delegate = null;
-
-        public ProductsAsyncTask(AsyncResponse delegate){
-            this.delegate = delegate;
-        }
-
-        @Override
-        protected List<Product> doInBackground(String... strings) {
-            List<Product> listOfProducts = Networking.fetchEarthquakeData(context ,strings[0]);
-            return listOfProducts;
-        }
-
-        @Override
-        protected void onPostExecute(List<Product> listOfproducts) {
-            delegate.processFinish(listOfproducts);
-        }
     }
 
 
