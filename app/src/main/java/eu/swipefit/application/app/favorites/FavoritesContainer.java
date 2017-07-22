@@ -4,9 +4,8 @@ package eu.swipefit.application.app.favorites;
  */
 
 import java.util.ArrayList;
+import eu.swipefit.application.Product;
 
-import eu.swipefit.application.app.swiping.ProductCard;
-import eu.swipefit.app.Product;
 
 /** ADD COMMENTS */
 public class FavoritesContainer {
@@ -18,6 +17,13 @@ public class FavoritesContainer {
     }
 
     public static void addFavroiteCard(Product product) {
+        // for every new item in the favorites collection
+        for (Product prod: products) {
+            // if the new foavorite item has the same id as an existing one from the list
+            if(product.getID().equals(prod.getID()))
+                // do not add that product as it is already there
+                return;
+        }
         products.add(product);
     }
 }
