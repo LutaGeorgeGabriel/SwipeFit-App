@@ -17,9 +17,17 @@ public class Product {
     @Expose
     private String siteURL;
 
-    @SerializedName("location")
+    @SerializedName("retailer")
     @Expose
-    private String location;
+    private String retailer;
+
+    @SerializedName("price")
+    @Expose
+    private String price;
+
+    @SerializedName("ID")
+    @Expose
+    private String ID;
 
     public String getName() {
         return name;
@@ -45,11 +53,27 @@ public class Product {
         this.siteURL = siteURL;
     }
 
-    public String getLocation() {
-        return location;
+    public String getRetailer() {
+        return retailer;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setRetailer(String retailer) {
+        this.retailer = retailer;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

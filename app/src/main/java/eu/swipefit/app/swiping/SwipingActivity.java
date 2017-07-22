@@ -2,6 +2,8 @@ package eu.swipefit.app.swiping;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.daprlabs.aaron.swipedeck.SwipeDeck;
@@ -38,13 +40,6 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         setContentView(R.layout.swiping_activity);
         final SwipeDeck cardStack = findViewById(R.id.swipe_deck);
 
-        /*for(Product product : Utils.loadProfiles(this.getApplicationContext())){
-            card = new ProductCard(swipeDeck, product,context);
-            card.setIndex(get);
-            //swipeDeck.addView(card);
-            cards.add(card);
-        }*/
-
         for(int i = 0; i < Utils.loadProfiles(this.getApplicationContext()).size();i++) {
             card = new ProductCard(swipeDeck, Utils.loadProfiles(this.getApplicationContext()).get(i),context);
             card.setIndex(i);
@@ -66,42 +61,24 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         cardStack.setCallback(new SwipeDeck.SwipeDeckCallback() {
             @Override
             public void cardSwipedLeft(long stableId) {
-                cardIndex++;
+                // we can increment the card index only as long as it is smaller than the arrayList size
+                if(cardIndex < cards.size()) {
+                    cardIndex++;
+                }
             }
 
             @Override
             public void cardSwipedRight(long stableId) {
-                cardIndex++;
+                // we can increment the card index only as long as it is smaller than the arrayList size
+                if(cardIndex < cards.size()) {
+                    cardIndex++;
+                }
             }
         });
 
         cardStack.setLeftImage(R.id.left_image);
         cardStack.setRightImage(R.id.right_image);
 
-        /*//example of buttons triggering events on the deck
-        Button btn = (Button) findViewById(R.id.button);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cardStack.swipeTopCardLeft(180);
-            }
-        });
-        Button btn2 = (Button) findViewById(R.id.button2);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cardStack.swipeTopCardRight(180);
-            }
-        });
-
-        Button btn3 = (Button) findViewById(R.id.button3);
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                testData.add("a sample string.");
-                adapter.notifyDataSetChanged();
-            }
-        });*/
 
         final MultiChoicesCircleButton.Item item1 = new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.up), 30);
 
@@ -129,13 +106,15 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
             public void onSelected(MultiChoicesCircleButton.Item item, int index) {
                 switch (index) {
                     case 0:
-                        cardStack.swipeTopCardLeft(180);
+                        // acts just like as a user natural swipe to left
+                        cardStack.swipeTopCardLeft(1000);
                         break;
                     case 1:
                         FavoritesContainer.addFavroiteCard(cards.get(cardIndex).getmProduct());
                         break;
                     case 3:
-                        cardStack.swipeTopCardRight(180);
+                        // acts just like as a user natural swipe to right
+                        cardStack.swipeTopCardRight(1000);
 
                 }
             }
