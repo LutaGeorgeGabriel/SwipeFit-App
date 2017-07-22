@@ -1,4 +1,4 @@
-package eu.swipefit.app.favorites;
+package eu.swipefit.application.app.favorites;
 /**
  * FILE DESCRIPTION
  */
@@ -17,8 +17,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import eu.swipefit.app.Product;
 import eu.swipefit.app.R;
+import eu.swipefit.application.Product;
 
 /** ADD COMMENTS */
 public class ProductAdapter extends ArrayAdapter<Product>{

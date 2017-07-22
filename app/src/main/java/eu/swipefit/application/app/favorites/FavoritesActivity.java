@@ -1,4 +1,4 @@
-package eu.swipefit.app.favorites;
+package eu.swipefit.application.app.favorites;
 /**
  * FILE DESCRIPTION
  */

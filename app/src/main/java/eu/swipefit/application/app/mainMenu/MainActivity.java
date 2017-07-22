@@ -19,6 +19,7 @@ import com.github.mzule.fantasyslide.SideBar;
 import com.github.mzule.fantasyslide.SimpleFantasyListener;
 import com.github.mzule.fantasyslide.Transformer;
 import eu.swipefit.app.R;
+import eu.swipefit.application.app.favorites.FavoritesActivity;
 import eu.swipefit.application.app.about.AboutActivity;
 import eu.swipefit.application.app.social.SocialActivity;
 import eu.swipefit.application.app.swiping.SwipingActivity;
