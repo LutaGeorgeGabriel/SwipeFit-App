@@ -7,23 +7,20 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ProgressBar;
 
+import com.bluehomestudio.progressimage.ProgressPicture;
 import com.daprlabs.aaron.swipedeck.SwipeDeck;
 import com.gjiazhe.multichoicescirclebutton.MultiChoicesCircleButton;
 
-import java.io.FileFilter;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import eu.swipefit.app.Product;
 import eu.swipefit.app.R;
-import eu.swipefit.app.networking.Networking;
 import eu.swipefit.app.app.favorites.FavoritesContainer;
+import eu.swipefit.app.networking.Networking;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
@@ -50,6 +47,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
         multiChoicesCircleButton.setVisibility(View.GONE);
 
+
+
         swipeBackActivityHelper = new SwipeBackActivityHelper(this);
         swipeBackActivityHelper.onActivityCreate();
 
@@ -62,13 +61,16 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         }
         String URL = properties.getProperty("URL");
 
+
         ProductsAsyncTask productsAsyncTask = (ProductsAsyncTask) new ProductsAsyncTask(new ProductsAsyncTask.AsyncResponse() {
             @Override
             public void processFinish(List<Product> list) {
                 products = list;
                 updateUi();
-                ProgressBar progressBar = findViewById(R.id.loading_indicator);
-                progressBar.setVisibility(View.GONE);
+                ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
+                progressPicture.setVisibility(View.GONE);
+
+
             }
         }).execute(URL);
 
@@ -131,11 +133,14 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         setContentView(R.layout.swiping_activity);
         final SwipeDeck cardStack = findViewById(R.id.swipe_deck);
 
-        for(int i = 0; i < products.size(); i++) {
-            card = new ProductCard(swipeDeck, products.get(i),context);
-            card.setIndex(i);
-            cards.add(card);
+        if(products != null) {
+            for (int i = 0; i < products.size(); i++) {
+                card = new ProductCard(swipeDeck, products.get(i), context);
+                card.setIndex(i);
+                cards.add(card);
+            }
         }
+
 
         final SwipeDeckAdapter adapter = new SwipeDeckAdapter(cards,this);
         if(cardStack != null){

@@ -74,7 +74,7 @@ public class Networking {
     public static List<Product> fetchEarthquakeData(Context context, String requestUrl) {
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
