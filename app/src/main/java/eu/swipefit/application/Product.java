@@ -1,4 +1,4 @@
-package eu.swipefit.app;
+package eu.swipefit.application;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

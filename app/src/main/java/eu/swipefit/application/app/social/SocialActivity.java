@@ -1,62 +1,36 @@
-package eu.swipefit.app.app.universalActivity;
+package eu.swipefit.application.app.social;
 /**
  * FILE DESCRIPTION
  */
 
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.view.View;
 
+import eu.swipefit.app.R;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.Utils;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
 
 /** ADD COMMENTS */
-public class UniversalActivity extends AppCompatActivity implements SwipeBackActivityBase {
+public class SocialActivity extends Activity implements SwipeBackActivityBase{
 
     private SwipeBackActivityHelper swipeBackActivityHelper;
-
-    public static Intent newIntent(Context context, String title) {
-        Intent intent = new Intent(context, UniversalActivity.class);
-        intent.putExtra("title", title);
-        return intent;
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.social_activity);
         swipeBackActivityHelper = new SwipeBackActivityHelper(this);
         swipeBackActivityHelper.onActivityCreate();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        setTitle(getIntent().getStringExtra("title"));
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return true;
-    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         swipeBackActivityHelper.onPostCreate();
-    }
-
-    @Override
-    public View findViewById(int id) {
-        View v = super.findViewById(id);
-        if (v == null && swipeBackActivityHelper != null)
-            return swipeBackActivityHelper.findViewById(id);
-        return v;
     }
 
     @Override
@@ -74,5 +48,4 @@ public class UniversalActivity extends AppCompatActivity implements SwipeBackAct
         Utils.convertActivityToTranslucent(this);
         getSwipeBackLayout().scrollToFinishActivity();
     }
-
 }

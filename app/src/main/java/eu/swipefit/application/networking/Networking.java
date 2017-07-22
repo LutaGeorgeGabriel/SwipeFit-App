@@ -1,7 +1,6 @@
-package eu.swipefit.app.networking;
+package eu.swipefit.application.networking;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -19,9 +18,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-import eu.swipefit.app.Product;
+import eu.swipefit.application.Product;
 
 /**
  * Created by GeorgeGabriel on 12/02/2017.

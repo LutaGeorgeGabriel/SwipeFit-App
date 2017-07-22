@@ -1,4 +1,4 @@
-package eu.swipefit.app.app.about;
+package eu.swipefit.application.app.about;
 /**
  * FILE DESCRIPTION
  */

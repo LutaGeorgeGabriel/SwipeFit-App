@@ -17,23 +17,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".app.splashscreen.SplashScreenActivity"
+        <activity android:name="eu.swipefit.application.app.splashscreen.SplashScreenActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".app.mainMenu.MainActivity"
+        <activity android:name="eu.swipefit.application.app.mainMenu.MainActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".app.swiping.SwipingActivity"
+        <activity android:name="eu.swipefit.application.app.swiping.SwipingActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".app.universalActivity.UniversalActivity"
+        <activity android:name="eu.swipefit.application.app.universalActivity.UniversalActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".app.about.AboutActivity"
+        <activity android:name="eu.swipefit.application.app.about.AboutActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -57,7 +57,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".app.social.SocialActivity"
+        <activity android:name="eu.swipefit.application.app.social.SocialActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

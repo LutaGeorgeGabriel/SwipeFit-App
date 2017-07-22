@@ -1,4 +1,4 @@
-package eu.swipefit.app.app.swiping;
+package eu.swipefit.application.app.swiping;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,10 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import eu.swipefit.app.Product;
+import eu.swipefit.application.Product;
 import eu.swipefit.app.R;
-import eu.swipefit.app.app.favorites.FavoritesContainer;
-import eu.swipefit.app.networking.Networking;
+import eu.swipefit.application.app.favorites.FavoritesContainer;
+import eu.swipefit.application.networking.Networking;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;

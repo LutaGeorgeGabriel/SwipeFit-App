@@ -9,7 +9,7 @@
     android:dividerPadding="0dp"
     android:orientation="vertical"
     android:showDividers="none"
-    tools:context=".app.splashscreen.SplashScreenActivity">
+    tools:context="eu.swipefit.application.app.splashscreen.SplashScreenActivity">
 
     <com.hanks.htextview.HTextView
         android:id="@+id/text"

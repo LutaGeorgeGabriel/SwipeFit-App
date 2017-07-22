@@ -1,4 +1,4 @@
-package eu.swipefit.app;
+package eu.swipefit.application;
 
 /**
  * Created by GeorgeGabriel on 05/03/2017.

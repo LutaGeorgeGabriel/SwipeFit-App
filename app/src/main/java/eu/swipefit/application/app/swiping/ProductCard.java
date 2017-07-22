@@ -1,4 +1,4 @@
-package eu.swipefit.app.app.swiping;
+package eu.swipefit.application.app.swiping;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import annotations.Layout;
 import annotations.View;
-import eu.swipefit.app.Product;
+import eu.swipefit.application.Product;
 import eu.swipefit.app.R;
 
 /**

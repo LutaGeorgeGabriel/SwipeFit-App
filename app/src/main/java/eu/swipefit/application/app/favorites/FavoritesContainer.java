@@ -1,11 +1,11 @@
-package eu.swipefit.app.app.favorites;
+package eu.swipefit.application.app.favorites;
 /**
  * FILE DESCRIPTION
  */
 
 import java.util.ArrayList;
 
-import eu.swipefit.app.app.swiping.ProductCard;
+import eu.swipefit.application.app.swiping.ProductCard;
 
 /** ADD COMMENTS */
 public class FavoritesContainer {
