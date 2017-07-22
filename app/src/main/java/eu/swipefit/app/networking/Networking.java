@@ -72,6 +72,13 @@ public class Networking {
      * Query the USGS dataset and return a list of {@link Product} objects.
      */
     public static List<Product> fetchEarthquakeData(Context context, String requestUrl) {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // Create URL object
         URL url = createUrl(requestUrl);
 
