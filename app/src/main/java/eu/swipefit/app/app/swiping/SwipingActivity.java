@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.daprlabs.aaron.swipedeck.SwipeDeck;
 import com.gjiazhe.multichoicescirclebutton.MultiChoicesCircleButton;
@@ -33,9 +35,9 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
 /** ADD COMMENTS */
 public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
-    private SwipeBackActivityHelper swipeBackActivityHelper;
-    private SwipeDeck swipeDeck;
-    private ProductCard card;
+    private SwipeBackActivityHelper swipeBackActivityHelper = null;
+    private SwipeDeck swipeDeck = null;
+    private ProductCard card = null;
     private List<ProductCard> cards = new ArrayList<>();
     public static Context context = null;
     private static List<Product> products = new ArrayList<>();
@@ -44,6 +46,10 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.swiping_activity);
+        MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
+        multiChoicesCircleButton.setVisibility(View.GONE);
+
         swipeBackActivityHelper = new SwipeBackActivityHelper(this);
         swipeBackActivityHelper.onActivityCreate();
 
@@ -61,11 +67,19 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
             public void processFinish(List<Product> list) {
                 products = list;
                 updateUi();
+                ProgressBar progressBar = findViewById(R.id.loading_indicator);
+                progressBar.setVisibility(View.GONE);
             }
         }).execute(URL);
 
+    }
 
-
+    // this method is to ensure that the index of the cards is always correct according to the UI
+    // and also that when we come back to this menu, it will begin from 0
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cardIndex = 0;
     }
 
     @Override
@@ -123,13 +137,6 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
             cards.add(card);
         }
 
-      /*  final List testData = new ArrayList<>();
-        testData.add("0");
-        testData.add("1");
-        testData.add("2");
-        testData.add("3");
-        testData.add("4");
-*/
         final SwipeDeckAdapter adapter = new SwipeDeckAdapter(cards,this);
         if(cardStack != null){
             cardStack.setAdapter(adapter);
@@ -205,6 +212,5 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
             }
         });
     }
-
 
 }
