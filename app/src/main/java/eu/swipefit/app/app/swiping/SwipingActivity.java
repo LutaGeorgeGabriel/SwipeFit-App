@@ -60,7 +60,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
             @Override
             public void processFinish(List<Product> list) {
                 products = list;
-                updateUI();
+                updateUi();
             }
         }).execute(URL);
 
