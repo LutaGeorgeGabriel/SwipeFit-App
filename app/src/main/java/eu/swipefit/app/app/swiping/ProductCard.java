@@ -1,4 +1,4 @@
-package eu.swipefit.app.swiping;
+package eu.swipefit.app.app.swiping;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;

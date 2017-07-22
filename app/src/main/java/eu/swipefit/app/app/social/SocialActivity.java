@@ -1,4 +1,4 @@
-package eu.swipefit.app.social;
+package eu.swipefit.app.app.social;
 /**
  * FILE DESCRIPTION
  */
@@ -6,7 +6,6 @@ package eu.swipefit.app.social;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
 
 import eu.swipefit.app.R;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;

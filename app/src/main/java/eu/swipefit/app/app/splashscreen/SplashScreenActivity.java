@@ -1,4 +1,4 @@
-package eu.swipefit.app.splashscreen;
+package eu.swipefit.app.app.splashscreen;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -17,7 +17,7 @@ import android.view.animation.AnimationUtils;
 import com.hanks.htextview.HTextView;
 import com.hanks.htextview.HTextViewType;
 
-import eu.swipefit.app.mainMenu.MainActivity;
+import eu.swipefit.app.app.mainMenu.MainActivity;
 import eu.swipefit.app.R;
 import pl.droidsonroids.gif.GifTextView;
 

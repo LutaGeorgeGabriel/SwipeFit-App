@@ -1,4 +1,4 @@
-package eu.swipefit.app.about;
+package eu.swipefit.app.app.about;
 /**
  * FILE DESCRIPTION
  */
@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import eu.swipefit.app.R;
 import nl.dionsegijn.konfetti.KonfettiView;

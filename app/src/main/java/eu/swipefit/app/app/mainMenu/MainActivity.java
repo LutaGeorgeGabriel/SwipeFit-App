@@ -1,4 +1,4 @@
-package eu.swipefit.app.mainMenu;
+package eu.swipefit.app.app.mainMenu;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
@@ -19,10 +19,10 @@ import com.github.mzule.fantasyslide.SideBar;
 import com.github.mzule.fantasyslide.SimpleFantasyListener;
 import com.github.mzule.fantasyslide.Transformer;
 import eu.swipefit.app.R;
-import eu.swipefit.app.about.AboutActivity;
-import eu.swipefit.app.social.SocialActivity;
-import eu.swipefit.app.swiping.SwipingActivity;
-import eu.swipefit.app.universalActivity.UniversalActivity;
+import eu.swipefit.app.app.about.AboutActivity;
+import eu.swipefit.app.app.social.SocialActivity;
+import eu.swipefit.app.app.swiping.SwipingActivity;
+import eu.swipefit.app.app.universalActivity.UniversalActivity;
 import io.saeid.fabloading.LoadingView;
 import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
