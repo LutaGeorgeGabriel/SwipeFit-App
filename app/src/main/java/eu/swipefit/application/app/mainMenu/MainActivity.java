@@ -273,6 +273,11 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void onFavoritesClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), FavoritesActivity.class);
+        startActivity(intent);
+    }
+
 
     /**
      * A native method that is implemented by the 'native-lib' native library,

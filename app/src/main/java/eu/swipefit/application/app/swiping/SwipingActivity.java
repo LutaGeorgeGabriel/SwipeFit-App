@@ -199,15 +199,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                         cardStack.swipeTopCardLeft(1000);
                         break;
                     case 1:
-                        // we can get the card index only as long as it is smaller than the arrayList size
-                        if(cardIndex < cards.size()) {
-                            FavoritesContainer.addFavroiteCard(cards.get(cardIndex));
-                        }
-                        break;
-                    case 2 :
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse(cards.get(cardIndex).getmProduct().getSiteURL()));
-                        startActivity(intent);
+                        FavoritesContainer.addFavroiteCard(cards.get(cardIndex).getmProduct());
                         break;
                     case 3:
                         // acts just like as a user natural swipe to right
@@ -217,5 +209,4 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
             }
         });
     }
-
 }
