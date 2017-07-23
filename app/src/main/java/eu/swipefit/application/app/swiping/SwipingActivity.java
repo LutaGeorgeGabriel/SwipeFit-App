@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bluehomestudio.progressimage.ProgressPicture;
 import com.daprlabs.aaron.swipedeck.SwipeDeck;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import es.dmoral.toasty.Toasty;
 import eu.swipefit.application.Product;
 import eu.swipefit.app.R;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
@@ -199,10 +201,14 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                         cardStack.swipeTopCardLeft(1000);
                         break;
                     case 1:
+                        // add current card to favorites container
                         FavoritesContainer.addFavroiteCard(cards.get(cardIndex).getmProduct());
+                        Toasty.normal(getApplicationContext(),"Product added to favorites", Toast.LENGTH_LONG,getResources().getDrawable(R.drawable.hanger)).show();
                         break;
                     case 2 :
+                        // create new intent that starts the default broswer
                         Intent intent = new Intent(Intent.ACTION_VIEW);
+                        // redirects browser to retailer URL
                         intent.setData(Uri.parse(cards.get(cardIndex).getmProduct().getSiteURL()));
                         startActivity(intent);
                         break;
