@@ -41,7 +41,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
     private List<ProductCard> cards = new ArrayList<>();
     public static Context context = null;
     private static List<Product> products = new ArrayList<>();
-    private static int cardIndex = -1;
+    private static int cardIndex = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,11 +160,18 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 if(cardIndex < cards.size()) {
                     cardIndex++;
                 }
-                ProductsInformation.like(cardIndex);
+                ProductsInformation.like(cardIndex-1);
                 // when we reach to the end of the products list
                 if(cardIndex == cards.size()) {
 
-                    //TODO
+                    MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
+                    multiChoicesCircleButton.setVisibility(View.GONE);
+
+                    Toast toast = Toasty.normal(getApplicationContext(),"End of product list", Toast.LENGTH_LONG,getResources().getDrawable(R.drawable.empty));
+                    toast.setGravity(1,0,0);
+                    toast.show();
+
+                    //TODO call new method
                 }
             }
 
@@ -174,11 +181,18 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 if(cardIndex < cards.size()) {
                     cardIndex++;
                 }
-                ProductsInformation.dislike(cardIndex);
+                ProductsInformation.dislike(cardIndex-1);
                 // when we reach to the end of the products list
                 if(cardIndex == cards.size()) {
 
-                    //TODO
+                    MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
+                    multiChoicesCircleButton.setVisibility(View.GONE);
+
+                    Toast toast = Toasty.normal(getApplicationContext(),"End of product list", Toast.LENGTH_LONG,getResources().getDrawable(R.drawable.empty));
+                    toast.setGravity(1,0,0);
+                    toast.show();
+
+                    //TODO call new method
                 }
             }
         });
