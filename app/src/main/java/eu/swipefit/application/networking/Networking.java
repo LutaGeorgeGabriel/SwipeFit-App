@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import eu.swipefit.application.Product;
+import eu.swipefit.application.app.productsInfo.ProductsInformation;
 
 /**
  * Created by GeorgeGabriel on 12/02/2017.
@@ -90,6 +91,7 @@ public class Networking {
 
         // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
         List<Product> products = loadProducts(context, jsonResponse);
+        ProductsInformation.initiateInfoArray(products.size());
 
         // Return the list of {@link Earthquake}s
         return products;
