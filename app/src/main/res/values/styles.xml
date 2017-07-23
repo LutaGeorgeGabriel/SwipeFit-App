@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:foreground">@android:color/background_light</item>
+        <item name="android:background">@drawable/fabric</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
 </resources>
