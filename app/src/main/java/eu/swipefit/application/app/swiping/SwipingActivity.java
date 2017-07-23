@@ -22,6 +22,7 @@ import es.dmoral.toasty.Toasty;
 import eu.swipefit.application.Product;
 import eu.swipefit.app.R;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
+import eu.swipefit.application.app.productsInfo.ProductsInformation;
 import eu.swipefit.application.networking.Networking;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
@@ -40,18 +41,18 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
     private List<ProductCard> cards = new ArrayList<>();
     public static Context context = null;
     private static List<Product> products = new ArrayList<>();
-
-    private static int cardIndex = 0;
+    private static int cardIndex = -1;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swiping_activity);
+        // when waiting for the data to be fetched, the menu button and the other views should not be displayed
         MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
         multiChoicesCircleButton.setVisibility(View.GONE);
 
-
-
+        // instantiate swipeBackActivityHelper right after the creation of the activity
         swipeBackActivityHelper = new SwipeBackActivityHelper(this);
+        // enable the swipeBackActivityHelper after the content view has been set
         swipeBackActivityHelper.onActivityCreate();
 
         context = getApplicationContext();
@@ -135,11 +136,14 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         setContentView(R.layout.swiping_activity);
         final SwipeDeck cardStack = findViewById(R.id.swipe_deck);
 
+        // condition to see if the products is null, to prevent the call of the .size() method on a null object
         if(products != null) {
             for (int i = 0; i < products.size(); i++) {
-                card = new ProductCard(swipeDeck, products.get(i), context);
-                card.setIndex(i);
-                cards.add(card);
+                if(ProductsInformation.getProductInformation()[i] == 0.5 ) {
+                    card = new ProductCard(swipeDeck, products.get(i), context);
+                    card.setIndex(i);
+                    cards.add(card);
+                }
             }
         }
 
@@ -156,6 +160,12 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 if(cardIndex < cards.size()) {
                     cardIndex++;
                 }
+                ProductsInformation.like(cardIndex);
+                // when we reach to the end of the products list
+                if(cardIndex == cards.size()) {
+
+                    //TODO
+                }
             }
 
             @Override
@@ -163,6 +173,12 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 // we can increment the card index only as long as it is smaller than the arrayList size
                 if(cardIndex < cards.size()) {
                     cardIndex++;
+                }
+                ProductsInformation.dislike(cardIndex);
+                // when we reach to the end of the products list
+                if(cardIndex == cards.size()) {
+
+                    //TODO
                 }
             }
         });
