@@ -201,6 +201,11 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                     case 1:
                         FavoritesContainer.addFavroiteCard(cards.get(cardIndex).getmProduct());
                         break;
+                    case 2 :
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse(cards.get(cardIndex).getmProduct().getSiteURL()));
+                        startActivity(intent);
+                        break;
                     case 3:
                         // acts just like as a user natural swipe to right
                         cardStack.swipeTopCardRight(1000);

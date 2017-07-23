@@ -3,7 +3,10 @@ package eu.swipefit.application.app.favorites;
  * FILE DESCRIPTION
  */
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -37,13 +40,30 @@ public class ProductAdapter extends ArrayAdapter<Product>{
             view = LayoutInflater.from(getContext()).inflate(R.layout.favorite_item,parent,false);
         }
 
-        Product currentProduct = getItem(position);
+        final Product currentProduct = getItem(position);
 
         ImageView imageView = view.findViewById(R.id.product_image);
         Picasso.with(getContext()).load(currentProduct.getImageUrl()).into(imageView);
 
-        TextView textView = view.findViewById(R.id.product_name);
-        textView.setText(currentProduct.getName());
+        TextView name = view.findViewById(R.id.nameTxt);
+        name.setText(currentProduct.getName());
+
+        TextView retailer = view.findViewById(R.id.retailerTxt);
+        retailer.setText(currentProduct.getRetailer());
+
+        TextView price = view.findViewById(R.id.priceTxt);
+        price.setText(currentProduct.getPrice() + " RON ");
+
+        ImageView buy = view.findViewById(R.id.buy);
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(currentProduct.getSiteURL()));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            }
+        });
 
         return view;
     }
