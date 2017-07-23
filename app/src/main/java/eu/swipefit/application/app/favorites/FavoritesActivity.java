@@ -34,7 +34,6 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
             swipeBackActivityHelper.onActivityCreate();
             ProductAdapter productAdapter = new ProductAdapter(getApplicationContext(),0,FavoritesContainer.getProducts());
             ListView listView = findViewById(R.id.listView);
-
             listView.setAdapter(productAdapter);
         }
     }
