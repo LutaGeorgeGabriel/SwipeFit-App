@@ -23,7 +23,7 @@ import eu.swipefit.application.Product;
 import eu.swipefit.app.R;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
-import eu.swipefit.application.networking.Networking;
+import eu.swipefit.application.networking.FetchData;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
@@ -122,7 +122,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
         @Override
         protected List<Product> doInBackground(String... strings) {
-            List<Product> listOfProducts = Networking.fetchEarthquakeData(context ,strings[0]);
+            List<Product> listOfProducts = FetchData.fetchEarthquakeData(context ,strings[0]);
             return listOfProducts;
         }
 
