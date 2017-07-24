@@ -4,9 +4,18 @@
     android:background="@drawable/fabric"
     android:layout_height="match_parent">
 
-    <nl.dionsegijn.konfetti.KonfettiView
+    <!--<nl.dionsegijn.konfetti.KonfettiView
         android:id="@+id/viewKonfetti"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" />-->
+
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/POST_BUTTON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POST"
+        android:onClick="onButtonClick" />
 
 </LinearLayout>
