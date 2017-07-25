@@ -26,10 +26,10 @@ import eu.swipefit.application.app.productsInfo.ProductsInformation;
  * Created by GeorgeGabriel on 12/02/2017.
  */
 
-public class Networking {
+public class FetchData {
 
-    private static final String TAG = "Networking";
-    private static final String LOG_TAG = Networking.class.getSimpleName();
+    private static final String TAG = "FetchData";
+    private static final String LOG_TAG = FetchData.class.getSimpleName();
 
     public static List<Product> loadProducts(Context context, String json){
         try{

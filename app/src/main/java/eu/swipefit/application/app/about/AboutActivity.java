@@ -7,8 +7,11 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.Button;
 
 import eu.swipefit.app.R;
+import eu.swipefit.application.networking.PushData;
 import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
@@ -19,7 +22,7 @@ public class AboutActivity extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_app_activity);
-        KonfettiView view = (KonfettiView) findViewById(R.id.viewKonfetti);
+        /*KonfettiView view = (KonfettiView) findViewById(R.id.viewKonfetti);
         Size size = new Size(12,3);
         view.build()
                 .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
@@ -30,6 +33,16 @@ public class AboutActivity extends Activity{
                 .addShapes(Shape.RECT, Shape.CIRCLE)
                 .addSizes(size)
                 .setPosition(-50f, view.getWidth() + 50f, -50f, -50f)
-                .stream(300, 5000L);
+                .stream(300, 5000L);*/
+    }
+
+    public void onButtonClick(View view) {
+        Button button = findViewById(R.id.POST_BUTTON);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PushData.sendDataToServer();
+            }
+        });
     }
 }
