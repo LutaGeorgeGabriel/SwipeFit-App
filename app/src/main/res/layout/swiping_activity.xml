@@ -12,6 +12,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/no_connection_image"
+            android:layout_centerInParent="true"
+            android:layout_width="70dp"
+            android:layout_height="70dp"/>
+
+        <TextView
+            android:id="@+id/no_connection_text"
+            android:layout_marginTop="20dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/no_connection_image"
+            android:textSize="15sp"
+            android:layout_width="172dp"
+            android:layout_height="20dp"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:text=""/>
+
 
         <com.bluehomestudio.progressimage.ProgressPicture
             android:id="@+id/loading_indicator"

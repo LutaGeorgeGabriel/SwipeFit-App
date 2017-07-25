@@ -3,10 +3,14 @@ package eu.swipefit.application.app.swiping;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bluehomestudio.progressimage.ProgressPicture;
@@ -46,6 +50,9 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swiping_activity);
+
+
+
         // when waiting for the data to be fetched, the menu button and the other views should not be displayed
         MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
         multiChoicesCircleButton.setVisibility(View.GONE);
@@ -65,17 +72,38 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         String URL = properties.getProperty("URL");
 
 
-        ProductsAsyncTask productsAsyncTask = (ProductsAsyncTask) new ProductsAsyncTask(new ProductsAsyncTask.AsyncResponse() {
-            @Override
-            public void processFinish(List<Product> list) {
-                products = list;
-                updateUi();
-                ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
-                progressPicture.setVisibility(View.GONE);
+        // we check to see if there is internet connection
+
+        // Get a reference to the ConnectivityManager to check state of network connectivity
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // Get details on the currently active default data network
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
+        // If there is a network connection, fetch data
+        if (networkInfo != null && networkInfo.isConnected()) {
+            // if it works
+            ProductsAsyncTask productsAsyncTask = (ProductsAsyncTask) new ProductsAsyncTask(new ProductsAsyncTask.AsyncResponse() {
+                @Override
+                public void processFinish(List<Product> list) {
+                    products = list;
+                    updateUi();
+                    ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
+                    progressPicture.setVisibility(View.GONE);
 
 
-            }
-        }).execute(URL);
+                }
+            }).execute(URL);
+        }
+        else {
+            ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
+            progressPicture.setVisibility(View.GONE);
+            ImageView imageView = findViewById(R.id.no_connection_image);
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.no_connection));
+            TextView textView = findViewById(R.id.no_connection_text);
+            textView.setText("No internet connection.");
+        }
 
     }
 
