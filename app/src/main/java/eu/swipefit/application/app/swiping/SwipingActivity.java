@@ -88,10 +88,20 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 @Override
                 public void processFinish(List<Product> list) {
                     products = list;
-                    updateUi();
-                    ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
-                    progressPicture.setVisibility(View.GONE);
-
+                    // check if the data from the server is null
+                    if(list == null || list.size() == 0) {
+                        ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
+                        progressPicture.setVisibility(View.GONE);
+                        ImageView imageView = findViewById(R.id.no_connection_image);
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.unable_fetch));
+                        TextView textView = findViewById(R.id.no_connection_text);
+                        textView.setText("Unable to fetch data.");
+                    }
+                    else {
+                        updateUi();
+                        ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
+                        progressPicture.setVisibility(View.GONE);
+                    }
 
                 }
             }).execute(URL);

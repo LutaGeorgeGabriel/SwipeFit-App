@@ -92,8 +92,12 @@ public class Networking {
         // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
         List<Product> products = loadProducts(context, jsonResponse);
         // create the array resposible for holding the state of likes & dislikes
-        ProductsInformation.initiateInfoArray(products.size());
-
+        if(products == null) {
+            return null;
+        }
+        else {
+            ProductsInformation.initiateInfoArray(products.size());
+        }
         // Return the list of {@link Earthquake}s
         return products;
     }
@@ -140,7 +144,9 @@ public class Networking {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the products JSON results.", e);
+            // we return the empty string
+            return jsonResponse;
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
