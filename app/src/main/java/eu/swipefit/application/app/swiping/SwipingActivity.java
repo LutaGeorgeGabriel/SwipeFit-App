@@ -176,12 +176,12 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
         // condition to see if the products is null, to prevent the call of the .size() method on a null object
         if(products != null) {
-            for (int i = 0; i < products.size(); i++) {
-                if(ProductsInformation.getProductInformation()[i] == 0.5 ) {
+            for (int i = 0; i < 5; i++) {
+                //if(ProductsInformation.getProductsInformation().get(i) == 0.5 ) {
                     card = new ProductCard(swipeDeck, products.get(i), context);
                     card.setIndex(i);
                     cards.add(card);
-                }
+            //}
             }
         }
 
