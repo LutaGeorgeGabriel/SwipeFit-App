@@ -12,7 +12,12 @@ public class ProductsInformation {
 
     // variable that stores the sate of the products (likes and dislikes)
     private static double[] productInformation = null;
-    private static HashMap<String,String> cardsIdInformation = new HashMap<>();
+
+    public static HashMap<String, String> getProductsInformation() {
+        return productsInformation;
+    }
+
+    private static HashMap<String,String> productsInformation = new HashMap<>();
 
     // this variable should be reinitialized after POST method
     private static ArrayList<String> cardsIds = new ArrayList<>();
@@ -30,13 +35,13 @@ public class ProductsInformation {
     // if the user likes the item then we set metadata to 1
     public static void like(int index) {
         productInformation[index] = 1;
-        cardsIdInformation.put(cardsIds.get(index),"1");
+        productsInformation.put(cardsIds.get(index),"1");
     }
 
     // if the user doesn't like the item then we set metadata to 0
     public static void dislike(int index) {
         productInformation[index] = 0;
-        cardsIdInformation.put(cardsIds.get(index),"0");
+        productsInformation.put(cardsIds.get(index),"0");
     }
 
     public static void setCardId(String id) {

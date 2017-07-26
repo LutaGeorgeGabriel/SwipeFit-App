@@ -22,17 +22,26 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import eu.swipefit.application.app.productsInfo.ProductsInformation;
+
 /** ADD COMMENTS */
 public class PushData {
     public static String formatJson() {
-        JSONObject root = new JSONObject();
+        JSONObject jsonObject = new JSONObject(ProductsInformation.getProductsInformation());
+        try {
+            return jsonObject.toString(1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        /*JSONObject root = new JSONObject();
         try {
             root.put("Android","Data from Android device");
             return root.toString(1);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return "";
+        return "";*/
+        return null;
     }
 
     public static void sendDataToServer() {
