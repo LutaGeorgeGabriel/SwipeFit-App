@@ -3,7 +3,6 @@ package eu.swipefit.application.app.favorites;
  * FILE DESCRIPTION
  */
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -43,7 +42,7 @@ public class ProductAdapter extends ArrayAdapter<Product>{
         final Product currentProduct = getItem(position);
 
         ImageView imageView = view.findViewById(R.id.product_image);
-        Picasso.with(getContext()).load(currentProduct.getImageUrl()).into(imageView);
+        Picasso.with(getContext()).load(currentProduct.getUrl()).into(imageView);
 
         TextView name = view.findViewById(R.id.nameTxt);
         name.setText(currentProduct.getName());
@@ -59,7 +58,7 @@ public class ProductAdapter extends ArrayAdapter<Product>{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(currentProduct.getSiteURL()));
+                intent.setData(Uri.parse(currentProduct.getSite()));
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getContext().startActivity(intent);
             }

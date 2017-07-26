@@ -11,11 +11,11 @@ public class Product {
 
     @SerializedName("url")
     @Expose
-    private String imageUrl;
+    private String url;
 
     @SerializedName("site")
     @Expose
-    private String siteURL;
+    private String site;
 
     @SerializedName("retailer")
     @Expose
@@ -37,20 +37,20 @@ public class Product {
         this.name = name;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getUrl() {
+        return url;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getSiteURL() {
-        return siteURL;
+    public String getSite() {
+        return site;
     }
 
-    public void setSiteURL(String siteURL) {
-        this.siteURL = siteURL;
+    public void setSite(String site) {
+        this.site = site;
     }
 
     public String getRetailer() {

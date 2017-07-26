@@ -277,7 +277,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                         // create new intent that starts the default broswer
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         // redirects browser to retailer URL
-                        intent.setData(Uri.parse(cards.get(cardIndex).getmProduct().getSiteURL()));
+                        intent.setData(Uri.parse(cards.get(cardIndex).getmProduct().getSite()));
                         startActivity(intent);
                         break;
                     case 3:
