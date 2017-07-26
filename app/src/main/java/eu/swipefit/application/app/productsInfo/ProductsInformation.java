@@ -4,10 +4,8 @@ package eu.swipefit.application.app.productsInfo;
  */
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 /** ADD COMMENTS */
 public class ProductsInformation {
