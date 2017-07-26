@@ -40,6 +40,7 @@ public class FetchData {
             for(int i=0;i<array.length();i++){
                 Product product = gson.fromJson(array.getString(i), Product.class);
                 productList.add(product);
+                ProductsInformation.setCardId(product.getID());
             }
             return productList;
         }catch (Exception e){
