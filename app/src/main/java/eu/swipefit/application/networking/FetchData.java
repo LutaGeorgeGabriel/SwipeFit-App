@@ -97,7 +97,7 @@ public class FetchData {
             return null;
         }
         else {
-            ProductsInformation.initiateInfoArray(products.size());
+            ProductsInformation.initializeMap(products.size());
         }
         // Return the list of {@link Earthquake}s
         return products;
