@@ -26,6 +26,9 @@ import eu.swipefit.application.app.productsInfo.ProductsInformation;
 
 /** ADD COMMENTS */
 public class PushData {
+
+    public static String URL_POST = null;
+
     public static String formatJson() {
         JSONObject jsonObject = new JSONObject(ProductsInformation.getProductsInformation());
         try {
@@ -66,7 +69,7 @@ public class PushData {
         HttpURLConnection conn = null;
 
         try {
-            URL url = new URL("http://192.168.0.101:8080/test");
+            URL url = new URL(URL_POST);
            conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(10000);
             conn.setConnectTimeout(15000);

@@ -28,6 +28,7 @@ import eu.swipefit.app.R;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
 import eu.swipefit.application.networking.FetchData;
+import eu.swipefit.application.networking.PushData;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
@@ -69,7 +70,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String URL = properties.getProperty("URL");
+        String URL = properties.getProperty("URL-GET");
+        PushData.URL_POST = properties.getProperty("URL-POST");
 
 
         // we check to see if there is internet connection
