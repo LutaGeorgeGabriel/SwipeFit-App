@@ -207,9 +207,15 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                     MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
                     multiChoicesCircleButton.setVisibility(View.GONE);
 
+                    // send user behaviour to server
+                    PushData.sendDataToServer();
+
+
+                    // notify the user that the list of products is now empty
                     Toast toast = Toasty.normal(getApplicationContext(),"End of product list", Toast.LENGTH_LONG,getResources().getDrawable(R.drawable.empty));
                     toast.setGravity(1,0,0);
                     toast.show();
+
 
                     //TODO call new method
                 }
@@ -228,9 +234,14 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                     MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
                     multiChoicesCircleButton.setVisibility(View.GONE);
 
+                    // send user behaviour to server
+                    PushData.sendDataToServer();
+
+                    // notify the user that the list of products is now empty
                     Toast toast = Toasty.normal(getApplicationContext(),"End of product list", Toast.LENGTH_LONG,getResources().getDrawable(R.drawable.empty));
                     toast.setGravity(1,0,0);
                     toast.show();
+
 
                     //TODO call new method
                 }
