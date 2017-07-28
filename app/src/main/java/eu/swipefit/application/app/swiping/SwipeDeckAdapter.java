@@ -57,7 +57,7 @@ public class SwipeDeckAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) v.findViewById(R.id.offer_image);
 
         //Picasso.with(context).load(R.drawable.peter).fit().centerCrop().into(imageView);
-        Picasso.with(context).load(data.get(position).mProduct.getUrl()).into(imageView);
+        Picasso.with(context).load(data.get(position).mProduct.getUrl()).resize(317,400).centerCrop().into(imageView);
         TextView name = v.findViewById(R.id.name_of_product);
         name.setText(data.get(position).mProduct.getName());
         TextView price = v.findViewById(R.id.price_of_product);
