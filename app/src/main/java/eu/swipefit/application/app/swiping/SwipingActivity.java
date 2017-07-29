@@ -52,8 +52,6 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swiping_activity);
 
-
-
         // when waiting for the data to be fetched, the menu button and the other views should not be displayed
         MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
         multiChoicesCircleButton.setVisibility(View.GONE);
@@ -71,7 +69,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
             e.printStackTrace();
         }
         String URL = properties.getProperty("URL-GET");
-        PushData.URL_POST = properties.getProperty("URL-POST");
+        PushData.URL_POST_BEHAVIOUR = properties.getProperty("URL-POST-BEHAVIOUR");
+        PushData.URL_POST_FAVORITES = properties.getProperty("URL-POST-FAVORITES");
 
 
         // we check to see if there is internet connection
@@ -162,7 +161,7 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
         @Override
         protected List<Product> doInBackground(String... strings) {
-            List<Product> listOfProducts = FetchData.fetchEarthquakeData(context ,strings[0]);
+            List<Product> listOfProducts = FetchData.fetchProductsData(context ,strings[0]);
             return listOfProducts;
         }
 
@@ -208,7 +207,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                     multiChoicesCircleButton.setVisibility(View.GONE);
 
                     // send user behaviour to server
-                    PushData.sendDataToServer();
+                    PushData.sendUserBehaviourToServer();
+                    PushData.sendUserFavoritesToServer();
 
 
                     // notify the user that the list of products is now empty
@@ -235,7 +235,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                     multiChoicesCircleButton.setVisibility(View.GONE);
 
                     // send user behaviour to server
-                    PushData.sendDataToServer();
+                    PushData.sendUserBehaviourToServer();
+                    PushData.sendUserFavoritesToServer();
 
                     // notify the user that the list of products is now empty
                     Toast toast = Toasty.normal(getApplicationContext(),"End of product list", Toast.LENGTH_LONG,getResources().getDrawable(R.drawable.empty));
