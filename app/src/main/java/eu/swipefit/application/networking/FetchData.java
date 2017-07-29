@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import eu.swipefit.application.Product;
+import eu.swipefit.application.app.favorites.FavoritesContainer;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
 
 /**
@@ -31,7 +32,7 @@ public class FetchData {
     private static final String TAG = "FetchData";
     private static final String LOG_TAG = FetchData.class.getSimpleName();
 
-    public static List<Product> loadProducts(Context context, String json){
+    public static List<Product> loadProducts(String json){
         try{
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
@@ -71,7 +72,7 @@ public class FetchData {
     /**
      * Query the USGS dataset and return a list of {@link Product} objects.
      */
-    public static List<Product> fetchEarthquakeData(Context context, String requestUrl) {
+    public static List<Product> fetchProductsData(Context context, String requestUrl) {
 
         try {
             Thread.sleep(2500);
@@ -91,13 +92,45 @@ public class FetchData {
         }
 
         // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
-        List<Product> products = loadProducts(context, jsonResponse);
+        List<Product> products = loadProducts(jsonResponse);
         // create the array resposible for holding the state of likes & dislikes
         if(products == null) {
             return null;
         }
         else {
             ProductsInformation.initializeMap(products.size());
+        }
+        // Return the list of {@link Earthquake}s
+        return products;
+    }
+
+    public static List<Product> fetchFavoritesData(String requestUrl) {
+
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Create URL object
+        URL url = createUrl(requestUrl);
+
+        // Perform HTTP request to the URL and receive a JSON response back
+        String jsonResponse = null;
+        try {
+            jsonResponse = makeHttpRequest(url);
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Problem making the HTTP request.", e);
+        }
+
+        // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
+        List<Product> products = loadProducts(jsonResponse);
+        // create the array resposible for holding the state of likes & dislikes
+        if(products == null) {
+            return null;
+        }
+        else {
+            FavoritesContainer.setProducts(products);
         }
         // Return the list of {@link Earthquake}s
         return products;
