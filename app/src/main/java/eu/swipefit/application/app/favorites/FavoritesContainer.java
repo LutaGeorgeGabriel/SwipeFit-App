@@ -4,15 +4,17 @@ package eu.swipefit.application.app.favorites;
  */
 
 import java.util.ArrayList;
+import java.util.List;
+
 import eu.swipefit.application.Product;
 
 
 /** ADD COMMENTS */
 public class FavoritesContainer {
 
-    private static ArrayList<Product> products = new ArrayList<>();
+    private static List<Product> products = new ArrayList<>();
 
-    public static ArrayList<Product> getProducts() {
+    public static List<Product> getProducts() {
         return products;
     }
 
@@ -25,5 +27,9 @@ public class FavoritesContainer {
                 return;
         }
         products.add(product);
+    }
+
+    public static void setProducts(List<Product> products) {
+        FavoritesContainer.products = products;
     }
 }

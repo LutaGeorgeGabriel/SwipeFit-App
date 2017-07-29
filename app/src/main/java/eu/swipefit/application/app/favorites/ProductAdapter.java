@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import eu.swipefit.app.R;
 import eu.swipefit.application.Product;
@@ -25,7 +26,7 @@ import eu.swipefit.application.Product;
 /** ADD COMMENTS */
 public class ProductAdapter extends ArrayAdapter<Product>{
 
-    public ProductAdapter(Context context, int resource, ArrayList<Product> products) {
+    public ProductAdapter(Context context, int resource, List<Product> products) {
         super(context,0,products);
 
     }
