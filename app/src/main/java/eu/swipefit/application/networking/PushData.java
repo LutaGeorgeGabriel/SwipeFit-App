@@ -6,6 +6,8 @@ package eu.swipefit.application.networking;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,39 +23,36 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.List;
 
+import eu.swipefit.application.Product;
+import eu.swipefit.application.app.favorites.FavoritesContainer;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
 
 /** ADD COMMENTS */
 public class PushData {
 
-    public static String URL_POST = null;
+    public static String URL_POST_BEHAVIOUR = null;
+    public static String URL_POST_FAVORITES = null;
 
-    public static String formatJson() {
+    public static String getJsonFromListOfProducts() {
         JSONObject jsonObject = new JSONObject(ProductsInformation.getProductsInformation());
         try {
             return jsonObject.toString(1);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        /*JSONObject root = new JSONObject();
-        try {
-            root.put("Android","Data from Android device");
-            return root.toString(1);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return "";*/
         return null;
     }
 
-    public static void sendDataToServer() {
-        final String json = formatJson();
+    public static void sendUserBehaviourToServer() {
+        final String json = getJsonFromListOfProducts();
+        final String type = "BEHAVIOUR";
 
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... voids) {
-                return getServerResponse(json);
+                return getServerResponse(json,type);
             }
 
             @Override
@@ -64,13 +63,44 @@ public class PushData {
         }.execute();
     }
 
-    public static String getServerResponse(String json) {
+    public static void sendUserFavoritesToServer() {
+        final String json = getJsonFromListOfFavorites(FavoritesContainer.getProducts());
+        final String type = "FAVORITES";
+
+        new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... voids) {
+                return getServerResponse(json,type);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                Log.i("Message response",s);
+            }
+        }.execute();
+    }
+
+    public static String getServerResponse(String json,String type) {
+
+        URL url = null;
+
+        try {
+            if(type.equals("BEHAVIOUR")) {
+                url = new URL(URL_POST_BEHAVIOUR);
+            } else if (type.equals("FAVORITES")) {
+                url = new URL(URL_POST_FAVORITES);
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
         HttpURLConnection conn = null;
 
         try {
-            URL url = new URL(URL_POST);
-           conn = (HttpURLConnection) url.openConnection();
+
+            assert url != null;
+            conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(10000);
             conn.setConnectTimeout(15000);
             conn.setRequestMethod("POST");
@@ -86,12 +116,6 @@ public class PushData {
             writer.close();
             os.close();
             conn.connect();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -119,5 +143,13 @@ public class PushData {
                 conn.disconnect();
             }
         }
+    }
+
+    // FAVORITES
+
+    public static String getJsonFromListOfFavorites(List<Product> favorites) {
+        Gson gson = new Gson();
+        String jsonlistOfFavorites = gson.toJson(favorites);
+        return jsonlistOfFavorites;
     }
 }
