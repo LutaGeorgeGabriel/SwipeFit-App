@@ -48,7 +48,6 @@ public class PushData {
              *
              * <INPUT TYPE, PROGRESS TYPE, RETURN TYPE>
              *
-             *
              * */
 
             @Override
@@ -69,6 +68,15 @@ public class PushData {
         final String type = "FAVORITES";
 
         new AsyncTask<Void, Void, String>() {
+
+            /**
+             * As network request are not allowed on Main thread also known as UI thread,
+             * I instantiate a new AsyncTask that has three generic parameters
+             *
+             * <INPUT TYPE, PROGRESS TYPE, RETURN TYPE>
+             *
+             * */
+
             @Override
             protected String doInBackground(Void... voids) {
                 return getServerResponse(json,type);
@@ -87,11 +95,11 @@ public class PushData {
      *
      * I set up a type in sendUserFavoritesToServer and sendUserBehaviourToServer methods
      *
-     * If the type is BEHAVIOUR, then I am ask the server to accept my POST request with the
+     * If the type is BEHAVIOUR, then I ask the server to accept my POST request with the
      * data which is user behaviour
      *
      *
-     * If the type is FAVORITES, then I am ask the server to accept my POST request with the
+     * If the type is FAVORITES, then I ask the server to accept my POST request with the
      * data which is user favorites
      *
      * */
@@ -114,15 +122,37 @@ public class PushData {
 
         try {
 
+            /**
+             * We assert the URL to be sure that is a valid one (not null)
+             * */
             assert url != null;
             conn = (HttpURLConnection) url.openConnection();
+            /**
+             * We set the read timeout to be 10 seconds
+             * */
             conn.setReadTimeout(10000);
             conn.setConnectTimeout(15000);
             conn.setRequestMethod("POST");
+
+            /**
+             * Here I am specifying that the connection should accept INPUT to send data as well as
+             * OUTPUT to get the response from the server
+             * */
             conn.setDoInput(true);
             conn.setDoOutput(true);
+
+            /**
+             * Here I am specifying the the header just denotes what the content is encoded in
+             *
+             * Content-type: application/json; charset=utf-8 designates the content to be in JSON format,
+             * encoded in the UTF-8 character encoding. Designating the encoding is somewhat redundant for
+             * JSON, since the default (only?) encoding for JSON is UTF-8. So in this case the receiving
+             * server apparently is happy knowing that it's dealing with JSON and assumes that the encoding
+             * is UTF-8 by default, that's why it works with or without the header.
+             * */
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setRequestProperty("Accept","application/json");
+
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
@@ -138,6 +168,11 @@ public class PushData {
             e.printStackTrace();
         }
 
+        /**
+         * This portion of code gets the response of the server which will represent the return data
+         * of the method
+         * */
+
         try {
             InputStream inputStream;
             // get stream
@@ -146,13 +181,23 @@ public class PushData {
             } else {
                 inputStream = conn.getErrorStream();
             }
-            // parse stream
+
+            /**
+             * Here we parse the stream sent by the server from inputStream to String
+             * */
+
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String temp, response = "";
             while ((temp = bufferedReader.readLine()) != null) {
                 response += temp;
             }
+
+            /**
+             * We construct the response here
+             * */
+
             return response;
+
         } catch (IOException e) {
             e.printStackTrace();
             return e.toString();
