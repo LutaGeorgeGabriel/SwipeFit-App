@@ -41,6 +41,16 @@ public class PushData {
         final String type = "BEHAVIOUR";
 
         new AsyncTask<Void, Void, String>() {
+
+            /**
+             * As network request are not allowed on Main thread also known as UI thread,
+             * I instantiate a new AsyncTask that has three generic parameters
+             *
+             * <INPUT TYPE, PROGRESS TYPE, RETURN TYPE>
+             *
+             *
+             * */
+
             @Override
             protected String doInBackground(Void... voids) {
                 return getServerResponse(json,type);
