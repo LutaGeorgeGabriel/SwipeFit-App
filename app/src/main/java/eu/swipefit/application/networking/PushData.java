@@ -72,6 +72,20 @@ public class PushData {
         }.execute();
     }
 
+    /**
+     * This method is used for two different requests:
+     *
+     * I set up a type in sendUserFavoritesToServer and sendUserBehaviourToServer methods
+     *
+     * If the type is BEHAVIOUR, then I am ask the server to accept my POST request with the
+     * data which is user behaviour
+     *
+     *
+     * If the type is FAVORITES, then I am ask the server to accept my POST request with the
+     * data which is user favorites
+     *
+     * */
+
     public static String getServerResponse(String json,String type) {
 
         URL url = null;
@@ -102,6 +116,9 @@ public class PushData {
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
+            /**
+             * Here is where I actually POST the data to the server
+             * */
             writer.write(json);
             writer.flush();
             writer.close();
