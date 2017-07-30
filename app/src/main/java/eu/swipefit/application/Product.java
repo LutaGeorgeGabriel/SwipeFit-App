@@ -3,7 +3,28 @@ package eu.swipefit.application;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Product represents the main representation for a physical product in my application
+ *
+ * It describes the fields that the product is composed of and I set up getters and setters to interact with the Product's attributes*/
+
 public class Product {
+
+    /**
+     * I used @SerializedName because its purpose as an annotation is that it indicates that a
+     * member should be serialized to JSON with the provided name value as its field name.
+     *
+     *  NOTE: The value you specify in this annotation must be a valid JSON field name.
+     *
+     * Also @Exposed is an an annotation that indicates that a member should be exposed for JSON
+     * serialization or deserialization.
+     *
+     *  NOTE: The @Expose annotation is useful in a style of programming where you want to explicitly
+     *  specify all fields that should get considered for serialization or deserialization.
+     *
+     * Both of the annotations are part of Gson 2.6.2 API
+     *
+     * */
 
     @SerializedName("name")
     @Expose

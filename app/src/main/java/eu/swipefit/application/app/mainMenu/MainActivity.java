@@ -30,8 +30,7 @@ import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
 
 /**
- * This is MainActivity activity - is represent the entry point of the application, just after the splashscreen wears out
- *
+ * This is MainActivity activity - is represents the entry point of the application, just after the splashscreen wears out
  */
 
 public class MainActivity extends Activity {
@@ -41,13 +40,26 @@ public class MainActivity extends Activity {
         System.loadLibrary("native-lib");
     }
 
+    /**
+     * The sliding menu of the app is based on the classic menu drawer so I need an instance of it that I will be using later
+     * */
     private DrawerLayout drawerLayout;
 
+    /**
+     * The onCreate(Bundle) is where I initialize my activity. Most importantly, here I will usually call setContentView(int) with a layout resource defining your UI,
+     * and using findViewById(int) to retrieve the widgets in that UI that you need to interact with programmatically.*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /**
+         * Setting UI with main_menu_activity resource
+         * */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activity);
 
+        /**
+         * Here I added a new LoadingView from 'io.saeid:fab-loading:1.0.0' repo
+         *
+         * I did added two if them and because thei load the UI at the same time, i created a separate thread for each of them*/
 
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -84,6 +96,9 @@ public class MainActivity extends Activity {
         });
 
     }
+
+    /**
+     * Here is where I set the listener for the drawer - currently is not used */
 
     private void setListener() {
         final TextView tipView = (TextView) findViewById(R.id.tipView);

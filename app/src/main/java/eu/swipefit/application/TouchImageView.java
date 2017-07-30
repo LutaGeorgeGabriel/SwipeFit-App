@@ -1,8 +1,5 @@
 package eu.swipefit.application;
 
-/**
- * Created by GeorgeGabriel on 05/03/2017.
- */
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -29,6 +26,19 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.OverScroller;
 import android.widget.Scroller;
+
+/**
+ * * TouchImageView extends ImageView and supports all of ImageView’s functionality.
+ * In addition, TouchImageView adds pinch zoom, dragging, fling, double tap zoom
+ * functionality and other animation polish.
+
+ * The intention is for TouchImageView to
+ * mirror as closely as possible the functionality of zoomable images in Gallery
+   apps.
+
+ * The class is free to use from https://github.com/MikeOrtiz/TouchImageView by MikeOrtiz
+ */
+
 
 public class TouchImageView extends ImageView {
 
