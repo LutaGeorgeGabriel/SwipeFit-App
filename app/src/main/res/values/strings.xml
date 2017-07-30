@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SwipeFit</string>
+    <string name="noInternet">No internet connection.</string>
 </resources>
