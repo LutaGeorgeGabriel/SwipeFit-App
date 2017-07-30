@@ -1,7 +1,4 @@
 package eu.swipefit.application.networking;
-/**
- * FILE DESCRIPTION
- */
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -18,10 +15,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +25,6 @@ import eu.swipefit.application.Product;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
 
-/** ADD COMMENTS */
 public class PushData {
 
     public static String URL_POST_BEHAVIOUR = null;
