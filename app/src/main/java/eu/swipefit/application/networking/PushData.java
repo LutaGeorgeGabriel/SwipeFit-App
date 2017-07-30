@@ -23,6 +23,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 
 import eu.swipefit.application.Product;
@@ -35,18 +36,8 @@ public class PushData {
     public static String URL_POST_BEHAVIOUR = null;
     public static String URL_POST_FAVORITES = null;
 
-    public static String getJsonFromListOfProducts() {
-        JSONObject jsonObject = new JSONObject(ProductsInformation.getProductsInformation());
-        try {
-            return jsonObject.toString(1);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     public static void sendUserBehaviourToServer() {
-        final String json = getJsonFromListOfProducts();
+        final String json = getJsonFromListOfProducts(ProductsInformation.getProductsInformation());
         final String type = "BEHAVIOUR";
 
         new AsyncTask<Void, Void, String>() {
@@ -145,11 +136,42 @@ public class PushData {
         }
     }
 
-    // FAVORITES
+    /**
+     * Preparing the data collected inside the app to be pushed to server
+     *
+     * In order to do this, I am converting the list of favorites to a JSON using
+     * Gson
+     *
+     * */
 
     public static String getJsonFromListOfFavorites(List<Product> favorites) {
         Gson gson = new Gson();
         String jsonlistOfFavorites = gson.toJson(favorites);
         return jsonlistOfFavorites;
+    }
+
+    /**
+     * Preparing the data collected inside the app to be pushed to server
+     *
+     * In order to do this, I am converting the user behaviour (which consists
+     * in a HashMap where KEY = [ID OF THE PRODUCT] & VALUE = [USER BEHAVIOUR : 0 - DISLIKE , 1 - LIKE]
+     *
+     * I am returning a JSON in the form os a string from the HashMap by transforming it to a JSON object
+     *
+     * This is just another way of transforming data to JSON, apart from the previous one using Gson
+     *
+     * NOTE: jsonObject.toString(1) - return JSON as a String in a human readable form (preetyPrint)
+     *       jsonObject.toString() - returns it without whitespaces
+     *
+     * */
+
+    public static String getJsonFromListOfProducts(HashMap<String, String> productsInformation) {
+        JSONObject jsonObject = new JSONObject(productsInformation);
+        try {
+            return jsonObject.toString(1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

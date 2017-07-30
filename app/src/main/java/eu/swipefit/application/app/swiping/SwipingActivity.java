@@ -52,16 +52,29 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swiping_activity);
 
-        // when waiting for the data to be fetched, the menu button and the other views should not be displayed
+        /**
+         *  When waiting for the data to be fetched, the menu button and the other views should not be displayed
+         * */
         MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
         multiChoicesCircleButton.setVisibility(View.GONE);
 
-        // instantiate swipeBackActivityHelper right after the creation of the activity
+        /**
+         * Instantiate swipeBackActivityHelper right after the creation of the activity
+         * */
+
         swipeBackActivityHelper = new SwipeBackActivityHelper(this);
-        // enable the swipeBackActivityHelper after the content view has been set
+
+        /**
+         * Enable the swipeBackActivityHelper after the content view has been set
+         * */
+
         swipeBackActivityHelper.onActivityCreate();
 
         context = getApplicationContext();
+
+        /**
+         * Here I load the properties file from which I am am parsing the
+         * */
         Properties properties = new Properties();
         try {
             properties.load(this.getApplication().getAssets().open("app.properties"));
