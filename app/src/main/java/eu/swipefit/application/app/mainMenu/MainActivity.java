@@ -29,6 +29,11 @@ import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
 
+/**
+ * This is MainActivity activity - is represent the entry point of the application, just after the splashscreen wears out
+ *
+ */
+
 public class MainActivity extends Activity {
 
     // Used to load the 'native-lib' library on application startup.
@@ -58,32 +63,6 @@ public class MainActivity extends Activity {
                 mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt_3,LoadingView.FROM_RIGHT);
                 mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shoes,LoadingView.FROM_TOP);
                 mLoadingView_00.startAnimation();
-                mLoadingView_00.addListener(new LoadingView.LoadingListener() {
-                    @Override
-                    public void onAnimationStart(int currentItemPosition) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(int nextItemPosition) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(int nextItemPosition) {
-                        /*LoadingView mLoadingView_00 = findViewById(R.id.loading_view_00);
-                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.blazer,LoadingView.FROM_BOTTOM);
-                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.coat,LoadingView.FROM_TOP);
-                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.dress,LoadingView.FROM_LEFT);
-                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.dress_2,LoadingView.FROM_RIGHT);
-                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.hoodie,LoadingView.FROM_LEFT);
-                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt,LoadingView.FROM_BOTTOM);
-                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt_2,LoadingView.FROM_TOP);
-                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shirt_3,LoadingView.FROM_RIGHT);
-                        mLoadingView_00.addAnimation(R.color.colorBackground,R.drawable.shoes,LoadingView.FROM_TOP);
-                        mLoadingView_00.startAnimation();*/
-                    }
-                });
             }
         });
 
@@ -101,46 +80,8 @@ public class MainActivity extends Activity {
                 mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.vest,LoadingView.FROM_LEFT);
                 mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.hoodie,LoadingView.FROM_BOTTOM);
                 mLoadingView_01.startAnimation();
-                mLoadingView_01.addListener(new LoadingView.LoadingListener() {
-                    @Override
-                    public void onAnimationStart(int currentItemPosition) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(int nextItemPosition) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(int nextItemPosition) {
-                        /*LoadingView mLoadingView_01 = findViewById(R.id.loading_view_01);
-                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.shorts,LoadingView.FROM_TOP);
-                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_BOTTOM);
-                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.sneakers,LoadingView.FROM_LEFT);
-                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tie,LoadingView.FROM_RIGHT);
-                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.top_hat,LoadingView.FROM_BOTTOM);
-                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.trousers,LoadingView.FROM_LEFT);
-                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.tshirt,LoadingView.FROM_TOP);
-                        mLoadingView_01.addAnimation(R.color.colorBackground,R.drawable.vest,LoadingView.FROM_RIGHT);
-                        mLoadingView_01.startAnimation();*/
-                    }
-                });
             }
         });
-
-
-        /*//also you can add listener for getting callback (optional)
-        mLoadingView_01.addListener(new LoadingView.LoadingListener() {
-            @Override public void onAnimationStart(int currentItemPosition) {
-            }
-
-            @Override public void onAnimationRepeat(int nextItemPosition) {
-            }
-
-            @Override public void onAnimationEnd(int nextItemPosition) {
-            }
-        });*/
 
     }
 
@@ -279,10 +220,4 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-    //public native String stringFromJNI();
 }
