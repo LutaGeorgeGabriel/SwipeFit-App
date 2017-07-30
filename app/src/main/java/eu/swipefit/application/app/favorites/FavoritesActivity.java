@@ -76,7 +76,7 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
                 }
             }).execute(URL_GET_FAVORITES);
         } else {
-            //TODO
+            setContentView(R.layout.no_internet_connection);
         }
     }
 
