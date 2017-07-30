@@ -27,6 +27,10 @@ import eu.swipefit.application.app.productsInfo.ProductsInformation;
 
 public class PushData {
 
+    /**
+     * Fields that contain the endpoint to which the app connects to in orded to push the data
+     * */
+
     public static String URL_POST_BEHAVIOUR = null;
     public static String URL_POST_FAVORITES = null;
 

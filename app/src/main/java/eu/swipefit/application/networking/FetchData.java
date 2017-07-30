@@ -199,6 +199,7 @@ public class FetchData {
      * Convert the {@link InputStream} into a String which contains the
      * whole JSON response from the server.
      */
+
     private static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
