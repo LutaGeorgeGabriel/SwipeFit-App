@@ -51,6 +51,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swiping_activity);
+        System.gc();
+        System.gc();
 
         /**
          *  When waiting for the data to be fetched, the menu button and the other views should not be displayed
