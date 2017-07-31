@@ -43,7 +43,8 @@ public class ProductAdapter extends ArrayAdapter<Product>{
         final Product currentProduct = getItem(position);
 
         ImageView imageView = view.findViewById(R.id.product_image);
-        Picasso.with(getContext()).load(currentProduct.getUrl()).into(imageView);
+        //Picasso.with(getContext()).load(currentProduct.getUrl()).into(imageView);
+        Picasso.with(getContext()).load(currentProduct.getUrl()).resize(180,250).into(imageView);
 
         TextView name = view.findViewById(R.id.nameTxt);
         name.setText(currentProduct.getName());
