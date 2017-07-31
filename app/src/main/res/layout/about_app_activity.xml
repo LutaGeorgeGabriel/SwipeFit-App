@@ -1,21 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:background="@drawable/fabric"
     android:layout_height="match_parent">
 
-    <!--<nl.dionsegijn.konfetti.KonfettiView
-        android:id="@+id/viewKonfetti"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />-->
-
-
-    <Button
-        android:layout_gravity="center"
-        android:id="@+id/POST_BUTTON"
+    <nl.dionsegijn.konfetti.KonfettiView
+        android:id="@+id/viewKonfetti_00"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="POST"
-        android:onClick="onButtonClick" />
+        android:layout_height="wrap_content" />
 
-</LinearLayout>
+    <nl.dionsegijn.konfetti.KonfettiView
+        android:id="@+id/viewKonfetti_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+       <LinearLayout
+           android:paddingTop="60dp"
+           android:layout_gravity="center"
+           android:layout_width="242dp"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+           <ImageView
+               android:layout_gravity="center_horizontal"
+               android:layout_width="70dp"
+               android:layout_height="70dp"
+               android:src="@mipmap/ic_launcher_round"/>
+
+           <TextView
+               android:gravity="center_vertical"
+               android:padding="10dp"
+               android:layout_marginRight="10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:text="SwipeFit"
+               android:textStyle="bold"
+               android:textSize="25sp"
+               android:textColor="@android:color/black"/>
+
+           <io.saeid.fabloading.LoadingView
+               app:useCompatPadding="true"
+               android:layout_gravity="center_vertical"
+               android:id="@+id/loading_view"
+               android:layout_width="107dp"
+               android:layout_height="90dp"
+               android:scaleX="1.2"
+               android:scaleY="1.2"
+               app:mfl_duration="500"
+               app:mfl_onclickLoading="true"
+               app:mfl_repeat="10" />
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:paddingTop="50dp"
+           android:layout_gravity="center"
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <ImageView
+               android:layout_weight="1"
+               android:id="@+id/student"
+               android:layout_centerInParent="true"
+               android:layout_width="159dp"
+               android:layout_height="240dp"
+               android:src="@drawable/developer"/>
+
+           <ImageView
+               android:layout_weight="1"
+               android:id="@+id/professor"
+               android:layout_centerInParent="true"
+               android:layout_width="159dp"
+               android:layout_height="240dp"
+               android:src="@drawable/daniel"/>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:paddingTop="10dp"
+           android:layout_gravity="center"
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <ImageView
+               android:layout_weight="1"
+               android:layout_centerInParent="true"
+               android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:src="@drawable/student"/>
+
+           <ImageView
+               android:layout_weight="1"
+               android:layout_centerInParent="true"
+               android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:src="@drawable/professor"/>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_gravity="center"
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <TextView
+               android:layout_weight="1"
+               android:gravity="center"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="@android:color/black"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               android:text="Absolvent"/>
+
+           <TextView
+               android:layout_weight="1"
+               android:gravity="center"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="@android:color/black"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               android:text="Coordonator"/>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:paddingBottom="20dp"
+           android:layout_gravity="center"
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <TextView
+               android:layout_weight="1"
+               android:gravity="center"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="@android:color/black"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               android:text="Luta George Gabriel"/>
+
+           <TextView
+               android:layout_weight="1"
+               android:gravity="center"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="@android:color/black"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               android:text="Dr. prof. Daniel Rosner"/>
+
+       </LinearLayout>
+
+       <ImageView
+           android:layout_gravity="center"
+           android:paddingBottom="20dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/acs_logo"/>
+
+   </LinearLayout>
+
+    <!--<RelativeLayout-->
+        <!--android:padding="50dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:id="@+id/student_details"-->
+        <!--android:layout_below="@id/student_picture"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/student_icons"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/dev"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:src="@drawable/dev"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_below="@id/dev"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Developer/Student"/>-->
+
+        <!--</RelativeLayout>-->
+
+        <!--<TextView-->
+            <!--android:layout_toRightOf="@id/student_icons"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Developer/Student"/>-->
+
+    <!--</RelativeLayout>-->
+
+
+</RelativeLayout>
