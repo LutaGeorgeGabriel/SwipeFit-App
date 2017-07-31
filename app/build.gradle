@@ -33,6 +33,9 @@ android {
             res.srcDirs = ['src/main/res', 'src/main/res/drawable']
         }
     }
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
 }
 
 repositories {
