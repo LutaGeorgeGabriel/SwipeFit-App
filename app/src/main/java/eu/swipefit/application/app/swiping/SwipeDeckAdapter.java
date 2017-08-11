@@ -64,6 +64,8 @@ public class SwipeDeckAdapter extends BaseAdapter {
         price.setText(data.get(position).mProduct.getPrice());
         TextView retailer = v.findViewById(R.id.retailer_of_product);
         retailer.setText(data.get(position).mProduct.getRetailer());
+        TextView cardID = v.findViewById(R.id.productID);
+        cardID.setText(data.get(position).getmProduct().getID());
 
 
         v.setOnClickListener(new View.OnClickListener() {
