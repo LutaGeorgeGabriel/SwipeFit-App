@@ -15,25 +15,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bluehomestudio.progressimage.ProgressPicture;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import eu.swipefit.app.R;
 import eu.swipefit.application.Product;
-import eu.swipefit.application.app.swiping.SwipingActivity;
 import eu.swipefit.application.networking.FetchData;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
+
+import static eu.swipefit.application.networking.PushData.sendFavoriteIdToDeleteFromDB;
 
 /**
  * ADD COMMENTS
@@ -42,6 +40,7 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
 
     private SwipeBackActivityHelper swipeBackActivityHelper = null;
     public static String URL_GET_FAVORITES = null;
+    public static String URL_DELETE_FAVORITE_ITEM = null;
     public static List<Product> favorites;
 
     @Override
@@ -61,6 +60,7 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
             e.printStackTrace();
         }
         URL_GET_FAVORITES = properties.getProperty("URL-GET-FAVORITES");
+        URL_DELETE_FAVORITE_ITEM = properties.getProperty("URL-DELETE-FAVORITE-ITEM");
 
         // we check to see if there is internet connection
 
@@ -169,7 +169,7 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
         int pos = info.position;
         final Product favorite_item = favorites.get(pos);
         if(item.getTitle().equals("Delete")) {
-            Toast.makeText(getApplicationContext(),"DELETE "+favorite_item.getName(),Toast.LENGTH_LONG).show();
+            sendFavoriteIdToDeleteFromDB(favorite_item.getID());
         }
         if(item.getTitle().equals("Share")) {
             Toast.makeText(getApplicationContext(),"SHARE "+favorite_item.getName(),Toast.LENGTH_LONG).show();
@@ -181,6 +181,7 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
 
     @Override
     public void onContextMenuClosed(Menu menu) {
-        Toast.makeText(getApplicationContext(),"MENU CLOSED",Toast.LENGTH_LONG).show();
+        finish();
+        startActivity(getIntent());
     }
 }
