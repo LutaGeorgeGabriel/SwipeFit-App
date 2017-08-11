@@ -10,14 +10,20 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bluehomestudio.progressimage.ProgressPicture;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -36,6 +42,7 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
 
     private SwipeBackActivityHelper swipeBackActivityHelper = null;
     public static String URL_GET_FAVORITES = null;
+    public static List<Product> favorites;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,6 +78,7 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
                     if (list == null || list.size() == 0) {
                         setContentView(R.layout.no_favorite_items);
                     } else {
+                        favorites = list;
                         updateUi(list);
                     }
                 }
@@ -78,6 +86,7 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
         } else {
             setContentView(R.layout.no_internet_connection);
         }
+
     }
 
     private void updateUi(List<Product> list) {
@@ -88,6 +97,7 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
         ProductAdapter productAdapter = new ProductAdapter(getApplicationContext(), 0, list);
         ListView listView = findViewById(R.id.list);
         listView.setVisibility(View.VISIBLE);
+        registerForContextMenu(listView);
         listView.setAdapter(productAdapter);
         ProgressPicture progressPicture = findViewById(R.id.loading);
         progressPicture.setVisibility(View.GONE);
@@ -136,6 +146,41 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
 
     @Override
     public void scrollToFinishActivity() {
+    }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        if(v.getId() == R.id.list) {
+//          AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+            menu.setHeaderIcon(getResources().getDrawable(R.drawable.white_dots));
+            menu.setHeaderTitle("Favorite Item Options");
+            String[] menuItems = getResources().getStringArray(R.array.menu_options_array);
+            for (int i = 0; i<menuItems.length; i++) {
+                menu.add(Menu.NONE, i, i, menuItems[i]);
+            }
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        int menuItemIndex = item.getItemId();
+        int pos = info.position;
+        final Product favorite_item = favorites.get(pos);
+        if(item.getTitle().equals("Delete")) {
+            Toast.makeText(getApplicationContext(),"DELETE "+favorite_item.getName(),Toast.LENGTH_LONG).show();
+        }
+        if(item.getTitle().equals("Share")) {
+            Toast.makeText(getApplicationContext(),"SHARE "+favorite_item.getName(),Toast.LENGTH_LONG).show();
+        }
+        String[] menuItems = getResources().getStringArray(R.array.menu_options_array);
+        String menuItemName = menuItems[menuItemIndex];
+        return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public void onContextMenuClosed(Menu menu) {
+        Toast.makeText(getApplicationContext(),"MENU CLOSED",Toast.LENGTH_LONG).show();
     }
 }
