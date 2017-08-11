@@ -22,8 +22,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import eu.swipefit.application.Product;
+import eu.swipefit.application.app.favorites.FavoritesActivity;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
+
+import static eu.swipefit.application.app.favorites.FavoritesActivity.URL_DELETE_FAVORITE_ITEM;
 
 public class PushData {
 
@@ -33,6 +36,16 @@ public class PushData {
 
     public static String URL_POST_BEHAVIOUR = null;
     public static String URL_POST_FAVORITES = null;
+
+    public static void sendFavoriteIdToDeleteFromDB(final String id) {
+        final String type = "DELETE_SPECIFIC_ITEM";
+        new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... voids) {
+                return getServerResponse(id,type);
+            }
+        }.execute();
+    }
 
     public static void sendUserBehaviourToServer() {
         final String json = getJsonFromListOfProducts(ProductsInformation.getProductsInformation());
@@ -111,6 +124,8 @@ public class PushData {
                 url = new URL(URL_POST_BEHAVIOUR);
             } else if (type.equals("FAVORITES")) {
                 url = new URL(URL_POST_FAVORITES);
+            } else if (type.equals("DELETE_SPECIFIC_ITEM")) {
+                url = new URL(URL_DELETE_FAVORITE_ITEM);
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
