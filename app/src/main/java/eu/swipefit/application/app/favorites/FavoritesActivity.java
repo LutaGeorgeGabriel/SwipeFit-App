@@ -5,6 +5,7 @@ package eu.swipefit.application.app.favorites;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -170,18 +171,27 @@ public class FavoritesActivity extends Activity implements SwipeBackActivityBase
         final Product favorite_item = favorites.get(pos);
         if(item.getTitle().equals("Delete")) {
             sendFavoriteIdToDeleteFromDB(favorite_item.getID());
+            finish();
+            startActivity(getIntent());
         }
         if(item.getTitle().equals("Share")) {
-            Toast.makeText(getApplicationContext(),"SHARE "+favorite_item.getName(),Toast.LENGTH_LONG).show();
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent
+                    .putExtra(Intent.EXTRA_TEXT,
+                            favorite_item.getSite());
+            sendIntent.setType("text/plain");
+            sendIntent.setPackage("com.facebook.orca");
+            try {
+                startActivity(sendIntent);
+            }
+            catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(getApplicationContext(),"Please Install Facebook Messenger", Toast.LENGTH_LONG).show();
+            }
         }
         String[] menuItems = getResources().getStringArray(R.array.menu_options_array);
         String menuItemName = menuItems[menuItemIndex];
         return super.onContextItemSelected(item);
     }
 
-    @Override
-    public void onContextMenuClosed(Menu menu) {
-        finish();
-        startActivity(getIntent());
-    }
 }
