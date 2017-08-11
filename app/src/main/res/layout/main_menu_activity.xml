@@ -219,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:onClick="onUserClick"
+                android:onClick="onAboutClick"
                 android:layout_marginLeft="30dp"
                 android:orientation="horizontal">
 
