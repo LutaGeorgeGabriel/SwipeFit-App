@@ -14,7 +14,7 @@ public class ProductsInformation {
     //private static double[] productInformation = null;
 
     public static HashMap<String, String> getProductsInformation() {
-        Iterator it = productsInformation.entrySet().iterator();
+        //Iterator it = productsInformation.entrySet().iterator();
         /*while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             System.out.println(pair.getKey() + " = " + pair.getValue());
@@ -50,7 +50,7 @@ public class ProductsInformation {
         return productInformation;
     }*/
 
-    // if the user likes the item then we set metadata to 1
+    /*// if the user likes the item then we set metadata to 1
     public static void like(int index) {
         //productInformation[index] = 1;
         productsInformation.put(cardsIds.get(index),"1");
@@ -60,6 +60,20 @@ public class ProductsInformation {
     public static void dislike(int index) {
         //productInformation[index] = 0;
         productsInformation.put(cardsIds.get(index),"0");
+    }*/
+
+    // refactoring
+
+    // if the user likes the item then we set metadata to 1
+    public static void like(String productID) {
+        //productInformation[index] = 1;
+        productsInformation.put(productID,"1");
+    }
+
+    // if the user doesn't like the item then we set metadata to 0
+    public static void dislike(String productID) {
+        //productInformation[index] = 0;
+        productsInformation.put(productID,"0");
     }
 
     public static void setCardId(String id) {

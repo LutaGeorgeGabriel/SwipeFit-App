@@ -214,7 +214,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 if(cardIndex < cards.size()) {
                     cardIndex++;
                 }
-                ProductsInformation.like(cardIndex-1);
+                //ProductsInformation.like(cardIndex-1);
+                ProductsInformation.like(cards.get(cardIndex-1).getmProduct().getID());
                 // when we reach to the end of the products list
                 if(cardIndex == cards.size()) {
 
@@ -242,7 +243,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 if(cardIndex < cards.size()) {
                     cardIndex++;
                 }
-                ProductsInformation.dislike(cardIndex-1);
+                //ProductsInformation.dislike(cardIndex-1);
+                ProductsInformation.dislike(cards.get(cardIndex-1).getmProduct().getID());
                 // when we reach to the end of the products list
                 if(cardIndex == cards.size()) {
 
