@@ -15,15 +15,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.github.mzule.fantasyslide.SideBar;
 import com.github.mzule.fantasyslide.SimpleFantasyListener;
 import com.github.mzule.fantasyslide.Transformer;
+
 import eu.swipefit.app.R;
-import eu.swipefit.application.app.favorites.FavoritesActivity;
 import eu.swipefit.application.app.about.AboutActivity;
+import eu.swipefit.application.app.favorites.FavoritesActivity;
 import eu.swipefit.application.app.social.SocialActivity;
 import eu.swipefit.application.app.swiping.SwipingActivity;
-import eu.swipefit.application.app.universalActivity.UniversalActivity;
 import io.saeid.fabloading.LoadingView;
 import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
@@ -59,7 +60,7 @@ public class MainActivity extends Activity {
         /**
          * Here I added a new LoadingView from 'io.saeid:fab-loading:1.0.0' repo
          *
-         * I did added two if them and because thei load the UI at the same time, i created a separate thread for each of them*/
+         * I did added two if them and because they load the UI at the same time, i created a separate thread for each of them*/
 
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -168,6 +169,14 @@ public class MainActivity extends Activity {
         });
     }
 
+    /**
+     * Added listeners for every button from the sliding menu
+     **/
+
+    /**
+     *
+     **/
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -180,7 +189,7 @@ public class MainActivity extends Activity {
         return true;
     }
 
-    public void onClick(View view) {
+    /*public void onClick(View view) {
         if (view instanceof TextView) {
             String title = ((TextView) view).getText().toString();
             if (title.startsWith("something")) {
@@ -193,15 +202,23 @@ public class MainActivity extends Activity {
             Intent intent = new Intent();
 
         }
-    }
+    }*/
 
-    public void onUserClick(View view) {
+    /**
+     * User option/button listener
+     **/
+
+    public void onAboutClick(View view) {
         View user = (TextView) findViewById(R.id.user);
         Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
         if (intent != null) {
             startActivity(intent);
         }
     }
+
+    /**
+     *  Swipe option/button listener
+     **/
 
     public void onSwipeClick(View view) {
         Intent intent = new Intent(getApplicationContext(), SwipingActivity.class);
@@ -225,10 +242,16 @@ public class MainActivity extends Activity {
                 .stream(300, 5000L);
     }
 
+
+
     public void onSocialClick(View view) {
         Intent intent = new Intent(getApplicationContext(), SocialActivity.class);
         startActivity(intent);
     }
+
+    /**
+     *  Favorites option/button listener
+     **/
 
     public void onFavoritesClick(View view) {
         Intent intent = new Intent(getApplicationContext(), FavoritesActivity.class);
