@@ -272,11 +272,15 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
         final MultiChoicesCircleButton.Item item1 = new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.up), 30);
 
-        MultiChoicesCircleButton.Item item2 = new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.ic_favorite), 70);
+        MultiChoicesCircleButton.Item item2 = new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.ic_share), 60);
 
-        MultiChoicesCircleButton.Item item3 = new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.shop), 110);
+        MultiChoicesCircleButton.Item item3 = new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.ic_favorite), 90);
 
-        MultiChoicesCircleButton.Item item4= new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.down), 150);
+        MultiChoicesCircleButton.Item item4 = new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.shop), 120);
+
+        MultiChoicesCircleButton.Item item5= new MultiChoicesCircleButton.Item("", getResources().getDrawable(R.drawable.down), 150);
+
+
 
 
         List<MultiChoicesCircleButton.Item> buttonItems = new ArrayList<>();
@@ -284,12 +288,14 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
         buttonItems.add(item2);
         buttonItems.add(item3);
         buttonItems.add(item4);
+        buttonItems.add(item5);
 
         MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
         multiChoicesCircleButton.setIcon(getResources().getDrawable(R.drawable.ic_menu));
         multiChoicesCircleButton.setBackgroundShadowColor(R.color.colorBackground);
         multiChoicesCircleButton.setButtonColor(R.color.colorSwipingMenuButton);
-
+        multiChoicesCircleButton.setItemDistanceToCentre(180f);
+        multiChoicesCircleButton.setItemRadius(40f);
         multiChoicesCircleButton.setButtonItems(buttonItems);
         multiChoicesCircleButton.setOnSelectedItemListener(new MultiChoicesCircleButton.OnSelectedItemListener() {
             @Override
@@ -300,21 +306,36 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                         cardStack.swipeTopCardLeft(1000);
                         break;
                     case 1:
+                        Intent sendIntent = new Intent();
+                        sendIntent.setAction(Intent.ACTION_SEND);
+                        sendIntent
+                                .putExtra(Intent.EXTRA_TEXT,
+                                        cards.get(cardIndex).getmProduct().getSite());
+                        sendIntent.setType("text/plain");
+                        sendIntent.setPackage("com.facebook.orca");
+                        try {
+                            startActivity(sendIntent);
+                        }
+                        catch (android.content.ActivityNotFoundException ex) {
+                            Toast.makeText(getApplicationContext(),"Please Install Facebook Messenger", Toast.LENGTH_LONG).show();
+                        }
+                        break;
+                    case 2 :
                         // add current card to favorites container
                         FavoritesContainer.addFavroiteCard(cards.get(cardIndex).getmProduct());
                         Toasty.normal(getApplicationContext(),"Product added to favorites", Toast.LENGTH_LONG,getResources().getDrawable(R.drawable.hanger)).show();
                         break;
-                    case 2 :
+                    case 3:
                         // create new intent that starts the default broswer
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         // redirects browser to retailer URL
                         intent.setData(Uri.parse(cards.get(cardIndex).getmProduct().getSite()));
                         startActivity(intent);
                         break;
-                    case 3:
+                    case 4:
                         // acts just like as a user natural swipe to right
                         cardStack.swipeTopCardRight(1000);
-
+                        break;
                 }
             }
         });
