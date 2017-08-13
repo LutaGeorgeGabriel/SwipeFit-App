@@ -17,6 +17,7 @@ import android.view.animation.AnimationUtils;
 import com.hanks.htextview.HTextView;
 import com.hanks.htextview.HTextViewType;
 
+import eu.swipefit.application.app.login.LoginActivity;
 import eu.swipefit.application.app.mainMenu.MainActivity;
 import eu.swipefit.app.R;
 import pl.droidsonroids.gif.GifTextView;
@@ -115,7 +116,7 @@ public class SplashScreenActivity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 if (intent != null) {
                     startActivity(intent);
                 }
