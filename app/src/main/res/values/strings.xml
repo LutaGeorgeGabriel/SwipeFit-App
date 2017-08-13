@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SwipeFit</string>
     <string name="noInternet">No internet connection.</string>
+    <string name="facebook_application_id" translatable="false">1741785999455490</string>
     <string-array name="menu_options_array">
         <item>Delete</item>
         <item>Share</item>
