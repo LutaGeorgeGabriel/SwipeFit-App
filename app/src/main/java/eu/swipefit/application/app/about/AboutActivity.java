@@ -9,11 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.Button;
 
 import eu.swipefit.app.R;
-import eu.swipefit.application.networking.PushData;
 import io.saeid.fabloading.LoadingView;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
