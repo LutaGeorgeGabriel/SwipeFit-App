@@ -23,12 +23,16 @@ import com.github.mzule.fantasyslide.Transformer;
 import eu.swipefit.app.R;
 import eu.swipefit.application.app.about.AboutActivity;
 import eu.swipefit.application.app.favorites.FavoritesActivity;
+import eu.swipefit.application.app.sharedPreferences.SharedPreferencesCounter;
 import eu.swipefit.application.app.social.SocialActivity;
 import eu.swipefit.application.app.swiping.SwipingActivity;
+import eu.swipefit.application.app.user.UserActivity;
 import io.saeid.fabloading.LoadingView;
 import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
+
+import static eu.swipefit.application.app.sharedPreferences.SharedPreferencesCounter.initializeSharedPreferences;
 
 /**
  * This is MainActivity activity - is represents the entry point of the application, just after the splashscreen wears out
@@ -56,6 +60,7 @@ public class MainActivity extends Activity {
          * */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activity);
+        initializeSharedPreferences(getApplicationContext());
 
         /**
          * Here I added a new LoadingView from 'io.saeid:fab-loading:1.0.0' repo
@@ -189,27 +194,12 @@ public class MainActivity extends Activity {
         return true;
     }
 
-    /*public void onClick(View view) {
-        if (view instanceof TextView) {
-            String title = ((TextView) view).getText().toString();
-            if (title.startsWith("something")) {
-                Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
-            } else {
-                startActivity(UniversalActivity.newIntent(this, title));
-            }
-        } else if (view.getId() == R.id.userInfo) {
-            startActivity(UniversalActivity.newIntent(this, "个人中心"));
-            Intent intent = new Intent();
-
-        }
-    }*/
-
     /**
      * User option/button listener
      **/
 
     public void onAboutClick(View view) {
-        View user = (TextView) findViewById(R.id.user);
+        View user = findViewById(R.id.user);
         Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
         if (intent != null) {
             startActivity(intent);
@@ -228,7 +218,7 @@ public class MainActivity extends Activity {
     }
 
     public void onFaceClick(View view) {
-        KonfettiView konfettiView = (KonfettiView) findViewById(R.id.viewKonfetti);
+        KonfettiView konfettiView = findViewById(R.id.viewKonfetti);
         Size size = new Size(12,3);
         konfettiView.build()
                 .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
@@ -245,8 +235,8 @@ public class MainActivity extends Activity {
 
 
     public void onSocialClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), SocialActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this,SocialActivity.class));
+
     }
 
     /**
@@ -254,8 +244,11 @@ public class MainActivity extends Activity {
      **/
 
     public void onFavoritesClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), FavoritesActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this,FavoritesActivity.class));
+    }
+
+    public void onUserClick(View view) {
+        startActivity(new Intent(this,UserActivity.class));
     }
 
 }
