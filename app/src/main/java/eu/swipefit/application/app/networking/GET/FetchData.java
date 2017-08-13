@@ -1,4 +1,4 @@
-package eu.swipefit.application.networking;
+package eu.swipefit.application.app.networking.GET;
 
 import android.content.Context;
 import android.util.Log;

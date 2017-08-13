@@ -1,4 +1,4 @@
-package eu.swipefit.application.networking;
+package eu.swipefit.application.app.networking.POST;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import eu.swipefit.application.Product;
-import eu.swipefit.application.app.favorites.FavoritesActivity;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
 
