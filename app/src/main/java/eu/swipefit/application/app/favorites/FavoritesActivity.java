@@ -27,12 +27,12 @@ import java.util.Properties;
 
 import eu.swipefit.app.R;
 import eu.swipefit.application.Product;
-import eu.swipefit.application.networking.FetchData;
+import eu.swipefit.application.app.networking.GET.FetchData;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
 
-import static eu.swipefit.application.networking.PushData.sendFavoriteIdToDeleteFromDB;
+import static eu.swipefit.application.app.networking.POST.PushData.sendFavoriteIdToDeleteFromDB;
 
 /**
  * ADD COMMENTS
