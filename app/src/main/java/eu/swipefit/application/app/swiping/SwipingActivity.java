@@ -27,8 +27,9 @@ import eu.swipefit.application.Product;
 import eu.swipefit.app.R;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
-import eu.swipefit.application.networking.FetchData;
-import eu.swipefit.application.networking.PushData;
+import eu.swipefit.application.app.networking.GET.FetchData;
+import eu.swipefit.application.app.networking.POST.PushData;
+import eu.swipefit.application.app.sharedPreferences.SharedPreferencesCounter;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
@@ -139,6 +140,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
     protected void onDestroy() {
         super.onDestroy();
         cardIndex = 0;
+        PushData.sendUserBehaviourToServer();
+        PushData.sendUserFavoritesToServer();
     }
 
     @Override
@@ -216,6 +219,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 }
                 //ProductsInformation.like(cardIndex-1);
                 ProductsInformation.like(cards.get(cardIndex-1).getmProduct().getID());
+                int numberOfSwipes = SharedPreferencesCounter.getDefaults("counter",context);
+                SharedPreferencesCounter.setDefaults("counter",++numberOfSwipes,context);
                 // when we reach to the end of the products list
                 if(cardIndex == cards.size()) {
 
@@ -245,6 +250,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 }
                 //ProductsInformation.dislike(cardIndex-1);
                 ProductsInformation.dislike(cards.get(cardIndex-1).getmProduct().getID());
+                int numberOfSwipes = SharedPreferencesCounter.getDefaults("counter",context);
+                SharedPreferencesCounter.setDefaults("counter",++numberOfSwipes,context);
                 // when we reach to the end of the products list
                 if(cardIndex == cards.size()) {
 
