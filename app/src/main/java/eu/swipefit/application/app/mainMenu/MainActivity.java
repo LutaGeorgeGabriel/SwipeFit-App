@@ -25,8 +25,7 @@ import com.github.mzule.fantasyslide.Transformer;
 import eu.swipefit.app.R;
 import eu.swipefit.application.app.about.AboutActivity;
 import eu.swipefit.application.app.favorites.FavoritesActivity;
-import eu.swipefit.application.app.sharedPreferences.SharedPreferencesCounter;
-import eu.swipefit.application.app.social.SocialActivity;
+import eu.swipefit.application.app.social.InsightsActivity;
 import eu.swipefit.application.app.swiping.SwipingActivity;
 import eu.swipefit.application.app.user.UserActivity;
 import io.saeid.fabloading.LoadingView;
@@ -237,7 +236,7 @@ public class MainActivity extends Activity {
 
 
     public void onSocialClick(View view) {
-        startActivity(new Intent(this,SocialActivity.class));
+        startActivity(new Intent(this, InsightsActivity.class));
 
     }
 

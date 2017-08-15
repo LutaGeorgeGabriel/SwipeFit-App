@@ -6,7 +6,7 @@ package eu.swipefit.application.app.favorites;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.swipefit.application.Product;
+import eu.swipefit.application.app.product.Product;
 
 
 /** ADD COMMENTS */

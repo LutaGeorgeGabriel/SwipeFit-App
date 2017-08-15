@@ -10,8 +10,8 @@ import java.util.List;
 
 import annotations.Layout;
 import annotations.View;
-import eu.swipefit.application.Product;
 import eu.swipefit.app.R;
+import eu.swipefit.application.app.product.Product;
 
 /**
  * FILE DESCRIPTION

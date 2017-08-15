@@ -1,4 +1,4 @@
-package eu.swipefit.application;
+package eu.swipefit.application.app.utils;
 
 
 import android.annotation.TargetApi;

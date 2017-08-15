@@ -19,8 +19,8 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.swipefit.application.Product;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
+import eu.swipefit.application.app.product.Product;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
 
 /**

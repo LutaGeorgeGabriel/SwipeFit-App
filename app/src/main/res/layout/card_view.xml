@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <eu.swipefit.application.TouchImageView
+            <eu.swipefit.application.app.utils.TouchImageView
                 android:id="@+id/offer_image"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"

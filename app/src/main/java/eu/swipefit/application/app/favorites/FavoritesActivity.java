@@ -26,8 +26,9 @@ import java.util.List;
 import java.util.Properties;
 
 import eu.swipefit.app.R;
-import eu.swipefit.application.Product;
 import eu.swipefit.application.app.networking.GET.FetchData;
+import eu.swipefit.application.app.product.Product;
+import eu.swipefit.application.app.product.ProductAdapter;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;

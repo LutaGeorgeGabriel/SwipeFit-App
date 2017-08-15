@@ -1,4 +1,4 @@
-package eu.swipefit.application.app.favorites;
+package eu.swipefit.application.app.product;
 /**
  * FILE DESCRIPTION
  */
@@ -13,16 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import eu.swipefit.app.R;
-import eu.swipefit.application.Product;
 
 /** ADD COMMENTS */
 public class ProductAdapter extends ArrayAdapter<Product>{

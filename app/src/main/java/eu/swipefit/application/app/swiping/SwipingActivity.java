@@ -24,10 +24,10 @@ import java.util.Properties;
 
 import es.dmoral.toasty.Toasty;
 import eu.swipefit.app.R;
-import eu.swipefit.application.Product;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
 import eu.swipefit.application.app.networking.GET.FetchData;
 import eu.swipefit.application.app.networking.POST.PushData;
+import eu.swipefit.application.app.product.Product;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
 import eu.swipefit.application.app.sharedPreferences.SharedPreferencesCounter;
 import eu.swipefit.application.app.user.UserActivity;
@@ -153,6 +153,10 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
     protected void onDestroy() {
         super.onDestroy();
         cardIndex = 0;
+
+        // send user behaviour to server
+        PushData.sendUserBehaviourToServer();
+        PushData.sendUserFavoritesToServer();
     }
 
     @Override

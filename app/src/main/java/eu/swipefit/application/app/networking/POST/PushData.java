@@ -21,8 +21,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-import eu.swipefit.application.Product;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
+import eu.swipefit.application.app.product.Product;
 import eu.swipefit.application.app.productsInfo.ProductsInformation;
 
 import static eu.swipefit.application.app.favorites.FavoritesActivity.URL_DELETE_FAVORITE_ITEM;
