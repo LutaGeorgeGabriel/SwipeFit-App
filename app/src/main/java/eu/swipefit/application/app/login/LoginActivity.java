@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import eu.swipefit.app.R;
 import eu.swipefit.application.app.mainMenu.MainActivity;
 import eu.swipefit.application.app.register.RegisterActivity;
+import eu.swipefit.application.app.user.UserActivity;
 
 /**
  * FILE DESCRIPTION
@@ -38,7 +39,7 @@ public class LoginActivity  extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        FirebaseApp.initializeApp(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
@@ -94,8 +95,12 @@ public class LoginActivity  extends Activity {
                 progressDialog.dismiss();
                 if(task.isSuccessful()) {
                     // start MainActivity
+                    Toast.makeText(LoginActivity.this,"User logged in successfully",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                } else {
+                    Toast.makeText(LoginActivity.this,"Wrong user email or password",Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }
@@ -104,7 +109,10 @@ public class LoginActivity  extends Activity {
         return firebaseAuth;
     }
 
-    public static void setFirebaseAuth(FirebaseAuth firebaseAuth) {
-        LoginActivity.firebaseAuth = firebaseAuth;
+
+    @Override
+    public void onBackPressed() {
+        // your code.
+        startActivity(new Intent(this, UserActivity.class));
     }
 }
