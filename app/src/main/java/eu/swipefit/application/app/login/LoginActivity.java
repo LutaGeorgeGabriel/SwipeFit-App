@@ -13,10 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import eu.swipefit.app.R;
 import eu.swipefit.application.app.mainMenu.MainActivity;
@@ -89,20 +93,29 @@ public class LoginActivity  extends Activity {
         progressDialog.setMessage("Logging in ...");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.show();
-        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                progressDialog.dismiss();
-                if(task.isSuccessful()) {
-                    // start MainActivity
-                    Toast.makeText(LoginActivity.this,"User logged in successfully",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                } else {
-                    Toast.makeText(LoginActivity.this,"Wrong user email or password",Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
+        firebaseAuth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
+                        if(task.isSuccessful()) {
+                            // start MainActivity
+                            Toast.makeText(LoginActivity.this,"User logged in successfully",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        if(e instanceof FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(LoginActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+                        if(e instanceof FirebaseAuthInvalidUserException) {
+                            Toast.makeText(LoginActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     public static FirebaseAuth getFirebaseAuth() {
