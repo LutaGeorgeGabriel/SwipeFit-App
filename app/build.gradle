@@ -42,6 +42,7 @@ repositories {
     mavenCentral()
     maven { url "https://jitpack.io" }
     maven { url 'https://maven.google.com' }
+    jcenter()
 }
 
 configurations.all {
@@ -73,8 +74,8 @@ dependencies {
     compile 'nl.dionsegijn:konfetti:1.0.2'
     compile 'com.google.firebase:firebase-auth:11.0.4'
     compile 'com.firebaseui:firebase-ui-auth:2.2.0'
-
-    // Required only if Facebook login support is required
+    compile 'com.krsticdragan:autotypetextview:1.1'
+    compile 'info.hoang8f:fbutton:1.0.5'
     compile('com.facebook.android:facebook-android-sdk:4.22.1')
     compile 'com.daprlabs.aaron:swipedeck:2.0.6'
     compile 'com.squareup.picasso:picasso:2.5.2'
