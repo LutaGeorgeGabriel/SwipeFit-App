@@ -65,5 +65,4 @@
         app:mccb_showBackgroundShadow="true"
         app:layout_behavior="@string/multi_choices_circle_button_behavior"/>
 
-
 </com.daprlabs.aaron.swipedeck.layouts.SwipeFrameLayout>
