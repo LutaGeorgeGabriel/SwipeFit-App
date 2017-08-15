@@ -116,7 +116,7 @@ public class SplashScreenActivity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 if (intent != null) {
                     startActivity(intent);
                 }
