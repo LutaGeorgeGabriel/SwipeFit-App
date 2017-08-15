@@ -88,7 +88,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="eu.swipefit.application.app.social.SocialActivity"
+        <activity android:name="eu.swipefit.application.app.social.InsightsActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait">
             <intent-filter>
