@@ -94,9 +94,6 @@ public class RegisterActivity extends Activity{
                             progressDialog.dismiss();
                             Toast.makeText(RegisterActivity.this,"Registered Successfully",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-                        } else {
-                            progressDialog.dismiss();
-                            Toast.makeText(RegisterActivity.this,"Could not register ... please try again",Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
