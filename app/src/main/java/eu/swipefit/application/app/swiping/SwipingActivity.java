@@ -153,11 +153,6 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
     protected void onDestroy() {
         super.onDestroy();
         cardIndex = 0;
-        if(UserActivity.getAuth().getCurrentUser() != null)
-        {
-            PushData.sendUserBehaviourToServer();
-            PushData.sendUserFavoritesToServer();
-        }
     }
 
     @Override
