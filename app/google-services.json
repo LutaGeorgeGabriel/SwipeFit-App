@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "397907809669",
-    "firebase_url": "https://swipefit-64d52.firebaseio.com",
-    "project_id": "swipefit-64d52",
-    "storage_bucket": "swipefit-64d52.appspot.com"
+    "project_number": "838238974077",
+    "firebase_url": "https://swipefit-aa564.firebaseio.com",
+    "project_id": "swipefit-aa564",
+    "storage_bucket": "swipefit-aa564.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:397907809669:android:8fe45a3f38299137",
+        "mobilesdk_app_id": "1:838238974077:android:8fe45a3f38299137",
         "android_client_info": {
           "package_name": "eu.swipefit.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "397907809669-1109lp7sf9o8450dktm7hfpg5hk3orsl.apps.googleusercontent.com",
+          "client_id": "838238974077-3q4tjb137bitsabhviqlbhblif864j7s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eu.swipefit.app",
+            "certificate_hash": "8509e69cf34a0b357643203c8ed6eb5e6e8a9ef4"
+          }
+        },
+        {
+          "client_id": "838238974077-olrouc51n42fovkkgho3shmienrdplgc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC4gqgLo0oZSthzv9ckCjw6W0ADSbYnM6I"
+          "current_key": "AIzaSyDoqd6Gk5OCEryPxusi3m18zAplKIzrjGU"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838238974077-olrouc51n42fovkkgho3shmienrdplgc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
