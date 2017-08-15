@@ -23,13 +23,14 @@ import java.util.List;
 import java.util.Properties;
 
 import es.dmoral.toasty.Toasty;
-import eu.swipefit.application.Product;
 import eu.swipefit.app.R;
+import eu.swipefit.application.Product;
 import eu.swipefit.application.app.favorites.FavoritesContainer;
-import eu.swipefit.application.app.productsInfo.ProductsInformation;
 import eu.swipefit.application.app.networking.GET.FetchData;
 import eu.swipefit.application.app.networking.POST.PushData;
+import eu.swipefit.application.app.productsInfo.ProductsInformation;
 import eu.swipefit.application.app.sharedPreferences.SharedPreferencesCounter;
+import eu.swipefit.application.app.user.UserActivity;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
@@ -51,87 +52,99 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.swiping_activity);
-        System.gc();
-        System.gc();
+        if (UserActivity.getAuth().getCurrentUser() == null) {
+            setContentView(R.layout.swiping_logged_out);
+            /**
+             * Instantiate swipeBackActivityHelper right after the creation of the activity
+             * */
 
-        /**
-         *  When waiting for the data to be fetched, the menu button and the other views should not be displayed
-         * */
-        MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
-        multiChoicesCircleButton.setVisibility(View.GONE);
+            swipeBackActivityHelper = new SwipeBackActivityHelper(this);
 
-        /**
-         * Instantiate swipeBackActivityHelper right after the creation of the activity
-         * */
+            /**
+             * Enable the swipeBackActivityHelper after the content view has been set
+             * */
 
-        swipeBackActivityHelper = new SwipeBackActivityHelper(this);
+            swipeBackActivityHelper.onActivityCreate();
+        } else {
+            setContentView(R.layout.swiping_activity);
+            System.gc();
+            System.gc();
 
-        /**
-         * Enable the swipeBackActivityHelper after the content view has been set
-         * */
+            /**
+             *  When waiting for the data to be fetched, the menu button and the other views should not be displayed
+             * */
+            MultiChoicesCircleButton multiChoicesCircleButton = findViewById(R.id.multiChoicesCircleButton);
+            multiChoicesCircleButton.setVisibility(View.GONE);
 
-        swipeBackActivityHelper.onActivityCreate();
+            /**
+             * Instantiate swipeBackActivityHelper right after the creation of the activity
+             * */
 
-        context = getApplicationContext();
+            swipeBackActivityHelper = new SwipeBackActivityHelper(this);
 
-        /**
-         * Here I load the properties file from which I am am parsing the
-         * */
-        Properties properties = new Properties();
-        try {
-            properties.load(this.getApplication().getAssets().open("app.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String URL = properties.getProperty("URL-GET");
-        PushData.URL_POST_BEHAVIOUR = properties.getProperty("URL-POST-BEHAVIOUR");
-        PushData.URL_POST_FAVORITES = properties.getProperty("URL-POST-FAVORITES");
+            /**
+             * Enable the swipeBackActivityHelper after the content view has been set
+             * */
+
+            swipeBackActivityHelper.onActivityCreate();
+
+            context = getApplicationContext();
+
+            /**
+             * Here I load the properties file from which I am am parsing the
+             * */
+            Properties properties = new Properties();
+            try {
+                properties.load(this.getApplication().getAssets().open("app.properties"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String URL = properties.getProperty("URL-GET");
+            PushData.URL_POST_BEHAVIOUR = properties.getProperty("URL-POST-BEHAVIOUR");
+            PushData.URL_POST_FAVORITES = properties.getProperty("URL-POST-FAVORITES");
 
 
-        // we check to see if there is internet connection
+            // we check to see if there is internet connection
 
-        // Get a reference to the ConnectivityManager to check state of network connectivity
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
+            // Get a reference to the ConnectivityManager to check state of network connectivity
+            ConnectivityManager connMgr = (ConnectivityManager)
+                    getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        // Get details on the currently active default data network
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+            // Get details on the currently active default data network
+            NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-        // If there is a network connection, fetch data
-        if (networkInfo != null && networkInfo.isConnected()) {
-            // if it works
-            ProductsAsyncTask productsAsyncTask = (ProductsAsyncTask) new ProductsAsyncTask(new ProductsAsyncTask.AsyncResponse() {
-                @Override
-                public void processFinish(List<Product> list) {
-                    products = list;
-                    // check if the data from the server is null
-                    if(list == null || list.size() == 0) {
-                        ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
-                        progressPicture.setVisibility(View.GONE);
-                        ImageView imageView = findViewById(R.id.no_connection_image);
-                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.unable_fetch));
-                        TextView textView = findViewById(R.id.no_connection_text);
-                        textView.setText("Unable to fetch data.");
+            // If there is a network connection, fetch data
+            if (networkInfo != null && networkInfo.isConnected()) {
+                // if it works
+                ProductsAsyncTask productsAsyncTask = (ProductsAsyncTask) new ProductsAsyncTask(new ProductsAsyncTask.AsyncResponse() {
+                    @Override
+                    public void processFinish(List<Product> list) {
+                        products = list;
+                        // check if the data from the server is null
+                        if (list == null || list.size() == 0) {
+                            ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
+                            progressPicture.setVisibility(View.GONE);
+                            ImageView imageView = findViewById(R.id.no_connection_image);
+                            imageView.setImageDrawable(getResources().getDrawable(R.drawable.unable_fetch));
+                            TextView textView = findViewById(R.id.no_connection_text);
+                            textView.setText("Unable to fetch data.");
+                        } else {
+                            updateUi();
+                            ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
+                            progressPicture.setVisibility(View.GONE);
+                        }
+
                     }
-                    else {
-                        updateUi();
-                        ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
-                        progressPicture.setVisibility(View.GONE);
-                    }
-
-                }
-            }).execute(URL);
+                }).execute(URL);
+            } else {
+                ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
+                progressPicture.setVisibility(View.GONE);
+                ImageView imageView = findViewById(R.id.no_connection_image);
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.no_connection));
+                TextView textView = findViewById(R.id.no_connection_text);
+                textView.setText("No internet connection.");
+            }
         }
-        else {
-            ProgressPicture progressPicture = findViewById(R.id.loading_indicator);
-            progressPicture.setVisibility(View.GONE);
-            ImageView imageView = findViewById(R.id.no_connection_image);
-            imageView.setImageDrawable(getResources().getDrawable(R.drawable.no_connection));
-            TextView textView = findViewById(R.id.no_connection_text);
-            textView.setText("No internet connection.");
-        }
-
     }
 
     // this method is to ensure that the index of the cards is always correct according to the UI
@@ -140,8 +153,11 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
     protected void onDestroy() {
         super.onDestroy();
         cardIndex = 0;
-        PushData.sendUserBehaviourToServer();
-        PushData.sendUserFavoritesToServer();
+        if(UserActivity.getAuth().getCurrentUser() != null)
+        {
+            PushData.sendUserBehaviourToServer();
+            PushData.sendUserFavoritesToServer();
+        }
     }
 
     @Override
