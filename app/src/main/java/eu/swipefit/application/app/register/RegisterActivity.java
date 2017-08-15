@@ -13,13 +13,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import eu.swipefit.app.R;
 import eu.swipefit.application.app.login.LoginActivity;
+import eu.swipefit.application.app.mainMenu.MainActivity;
+import eu.swipefit.application.app.user.UserActivity;
 
 /**
  * FILE DESCRIPTION
@@ -81,18 +85,34 @@ public class RegisterActivity extends Activity{
         progressDialog.setMessage("Registering User ...");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.show();
-        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    // user is succesfully registered and logged in
-                    progressDialog.dismiss();
-                    Toast.makeText(RegisterActivity.this,"Registered Successfully",Toast.LENGTH_SHORT).show();
-                } else {
-                    progressDialog.dismiss();
-                    Toast.makeText(RegisterActivity.this,"Could not register ... please try again",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        firebaseAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            // user is succesfully registered and logged in
+                            progressDialog.dismiss();
+                            Toast.makeText(RegisterActivity.this,"Registered Successfully",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegisterActivity.this,"Could not register ... please try again",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        if(e instanceof FirebaseAuthWeakPasswordException) {
+                            Toast.makeText(RegisterActivity.this,((FirebaseAuthWeakPasswordException) e).getReason(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void onBackPressed() {
+        // your code.
+        startActivity(new Intent(this, UserActivity.class));
     }
 }
