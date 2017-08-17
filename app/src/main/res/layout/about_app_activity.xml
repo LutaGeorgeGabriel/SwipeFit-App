@@ -68,7 +68,6 @@
 
            <ImageView
                android:layout_weight="1"
-               android:id="@+id/student"
                android:layout_centerInParent="true"
                android:layout_width="159dp"
                android:layout_height="240dp"
@@ -76,7 +75,6 @@
 
            <ImageView
                android:layout_weight="1"
-               android:id="@+id/professor"
                android:layout_centerInParent="true"
                android:layout_width="159dp"
                android:layout_height="240dp"

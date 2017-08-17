@@ -8,7 +8,6 @@
 
     <com.github.mzule.fantasyslide.FantasyDrawerLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/drawer"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
@@ -38,7 +37,6 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/layout_first_row"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
@@ -109,7 +107,6 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/icon"

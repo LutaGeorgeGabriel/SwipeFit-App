@@ -4,6 +4,5 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorMenu">#33C4C4C4</color>
     <color name="colorSwipingMenuButton">#14c4c4c4</color>
 </resources>
