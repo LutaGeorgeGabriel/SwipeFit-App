@@ -234,6 +234,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 }
                 //ProductsInformation.like(cardIndex-1);
                 ProductsInformation.like(cards.get(cardIndex-1).getmProduct().getID());
+                Toast id = Toasty.normal(getApplicationContext(), "Product with ID " + cards.get(cardIndex - 1).getmProduct().getID() + " liked", getResources().getDrawable(R.drawable.ic_touch));
+                id.show();
                 int numberOfSwipes = SharedPreferencesCounter.getDefaults("counter",context);
                 SharedPreferencesCounter.setDefaults("counter",++numberOfSwipes,context);
                 // when we reach to the end of the products list
@@ -265,6 +267,8 @@ public class SwipingActivity extends Activity implements SwipeBackActivityBase{
                 }
                 //ProductsInformation.dislike(cardIndex-1);
                 ProductsInformation.dislike(cards.get(cardIndex-1).getmProduct().getID());
+                Toast id = Toasty.normal(getApplicationContext(), "Product with ID " + cards.get(cardIndex - 1).getmProduct().getID() + " disliked", getResources().getDrawable(R.drawable.ic_touch));
+                id.show();
                 int numberOfSwipes = SharedPreferencesCounter.getDefaults("counter",context);
                 SharedPreferencesCounter.setDefaults("counter",++numberOfSwipes,context);
                 // when we reach to the end of the products list
