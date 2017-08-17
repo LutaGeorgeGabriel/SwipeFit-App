@@ -12,6 +12,7 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,11 @@ import android.widget.Toast;
 import com.github.mzule.fantasyslide.SideBar;
 import com.github.mzule.fantasyslide.SimpleFantasyListener;
 import com.github.mzule.fantasyslide.Transformer;
+
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 import eu.swipefit.app.R;
 import eu.swipefit.application.app.about.AboutActivity;
@@ -102,6 +108,21 @@ public class MainActivity extends Activity {
             }
         });
 
+        String ipAddress = null;
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        ipAddress = inetAddress.getHostAddress().toString();
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+        }
+
+        Log.d("IP ADDRESS", ipAddress);
     }
 
     /**
